@@ -1,0 +1,164 @@
+/* style.css */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #fdfaf6;
+  color: #3e2c1c;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #d9b08c;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3e2c1c;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #3e2c1c;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #fff;
+}
+
+.cart {
+  position: relative;
+}
+
+.contador {
+  background: #8b5e3c;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f5e6d3;
+}
+
+.hero-texto {
+  max-width: 500px;
+  margin-bottom: 1rem;
+}
+
+.hero-texto h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-texto p {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #8b5e3c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #3e2c1c;
+}
+
+.hero-imagen img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+/* Productos */
+.productos {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.productos h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.producto {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.producto img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #d9b08c;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+  }
+
+  .grid {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .producto {
+    flex: 1;
+    max-width: 300px;
+  }
+}
