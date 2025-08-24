@@ -13,6 +13,9 @@ body {
   background-color: #fdfaf6;
   color: #3e2c1c;
 }
+body{
+    background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
+}
 
 /* Header */
 header {
