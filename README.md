@@ -3,7 +3,7 @@ Proyecto fullstack
 
 Integrantes:
 Castro Braian ;
-Augusto Almarcha
+Almarcha Augusto ;
 Badino Ian
 Funcionalidad Implementada:
 
