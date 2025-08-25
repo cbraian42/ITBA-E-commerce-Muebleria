@@ -4,7 +4,8 @@ Proyecto fullstack
 Integrantes:
 Castro Braian ;
 Almarcha Augusto ;
-Badino Ian
+Badino Ian;
+Benjamin Benitez
 Funcionalidad Implementada:
 
 Tecnologias utilizadas:
