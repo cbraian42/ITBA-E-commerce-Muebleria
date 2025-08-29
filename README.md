@@ -6,6 +6,7 @@ Castro Braian ;
 Almarcha Augusto ;
 Badino Ian;
 Benjamin Benitez
+Sequeria Osvaldo;
 Funcionalidad Implementada:
 
 Tecnologias utilizadas:

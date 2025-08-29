@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mueblería Hermanos Jota — Inicio</title>
+  <meta name="description" content="Muebles de madera de autor. Calidad artesanal y diseño moderno." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+
+  <!-- Header  -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Ir al inicio">
+        <img src="img/logo.svg" alt="Logo Mueblería Hermanos Jota" onerror="this.style.display='none'" />
+        <span class="logo__text">Mueblería Hermanos Jota</span>
+      </a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu" id="navToggle">☰</button>
+
+      <nav class="nav" id="navMenu" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html" class="is-active">Inicio</a></li>
+          <li><a href="productos.html">Catálogo</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="carrito.html" class="cart" aria-label="Ver carrito">
+              🛒 <span class="cart__count" id="cart-count" aria-live="polite">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 id="hero-title">Muebles de autor, hechos para durar</h1>
+          <p>Calidad artesanal con líneas de diseño moderno. Descubrí nuestra colección pensada para tu hogar.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="productos.html">Ver catálogo</a>
+            <a class="btn" href="#destacados">Ver destacados</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img src="img/hero.jpg" alt="Sala moderna con muebles de madera" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Destacados -->
+    <section class="section" id="destacados" aria-labelledby="destacados-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="destacados-title">Productos destacados</h2>
+          <a class="link" href="productos.html">Ver todo →</a>
+        </div>
+
+        <div class="grid grid--cards">
+          <!-- Tarjetas de ejemplo (luego se rellenan dinámicamente con JS en el Sprint 2) -->
+          <article class="card" data-product-id="1">
+            <img class="card__img" src="img/mesa.jpg" alt="Mesa de comedor de madera" />
+            <div class="card__body">
+              <h3 class="card__title">Mesa de comedor</h3>
+              <p class="card__price">$ 25.000</p>
+              <div class="card__actions">
+                <a class="btn btn--ghost" href="producto.html?id=1">Ver detalle</a>
+                <button class="btn btn--primary" type="button" data-action="add-to-cart" disabled title="Se habilitará con JS en el Sprint 2">Añadir</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="2">
+            <img class="card__img" src="img/silla.jpg" alt="Silla de madera" />
+            <div class="card__body">
+              <h3 class="card__title">Silla de madera</h3>
+              <p class="card__price">$ 8.000</p>
+              <div class="card__actions">
+                <a class="btn btn--ghost" href="producto.html?id=2">Ver detalle</a>
+                <button class="btn btn--primary" type="button" data-action="add-to-cart" disabled>Añadir</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="3">
+            <img class="card__img" src="img/sofa.jpg" alt="Sofá de tres cuerpos" />
+            <div class="card__body">
+              <h3 class="card__title">Sofá 3 cuerpos</h3>
+              <p class="card__price">$ 55.000</p>
+              <div class="card__actions">
+                <a class="btn btn--ghost" href="producto.html?id=3">Ver detalle</a>
+                <button class="btn btn--primary" type="button" data-action="add-to-cart" disabled>Añadir</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="4">
+            <img class="card__img" src="img/estante.jpg" alt="Estante moderno" />
+            <div class="card__body">
+              <h3 class="card__title">Estante moderno</h3>
+              <p class="card__price">$ 12.000</p>
+              <div class="card__actions">
+                <a class="btn btn--ghost" href="producto.html?id=4">Ver detalle</a>
+                <button class="btn btn--primary" type="button" data-action="add-to-cart" disabled>Añadir</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+   
+    <section class="band" aria-label="Propuesta de valor">
+      <div class="container band__inner">
+        <div class="band__item">
+          <h3>Hecho a mano</h3>
+          <p>Terminaciones artesanales y maderas seleccionadas.</p>
+        </div>
+        <div class="band__item">
+          <h3>Diseño moderno</h3>
+          <p>Estética atemporal que combina con tu hogar.</p>
+        </div>
+        <div class="band__item">
+          <h3>Garantía Jota</h3>
+          <p>Calidad respaldada por más de 30 años.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p>© 2025 Mueblería Hermanos Jota</p>
+      <nav aria-label="Redes sociales" class="social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle?.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      navMenu.classList.toggle('is-open');
+    });
+  </script>
+</body>
+</html>
+
