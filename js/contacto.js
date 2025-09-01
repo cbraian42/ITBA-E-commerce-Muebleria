@@ -6,34 +6,28 @@ const nameTxt = document.getElementById("nombreTxt");
 const emailTxt = document.getElementById("mailTxt");
 const messageTxtA = document.getElementById("mensajeTxtA");
 
-//funcion para verificar que no esten vacios los inputs (el regex del mail lo maneja html, por el tipo de input)
-function verifyContactFields() {
-    let stop = false; //bool q maneja si el form se "envia" o no
+function genericVerifyer(controller) {
+    if (controller.value === "") { //se verifica si esta vacio o no
+        controller.style.borderColor = "red"; //color del borde del input pasa en rojo como aviso
+        return true;
+    } else {
+        controller.style.borderColor = "#ccc"; //reset del borde del input, cuando no esta vacio
+        return false;
+    }
+}
 
-    if (nameTxt.value === "") { //se verifica si esta vacio o no
-        stop = true; //si un solo campo esta vacio no se envia el form
-        nameTxt.style.borderColor = "red"; //color del borde del input pasa en rojo como aviso
-    } else nameTxt.style.borderColor = "#ccc"; //reset del borde del input, cuando no esta vacio
-
-
-    if (emailTxt.value === "") {
-        stop = true;
-        emailTxt.style.borderColor = "red";
-    } else emailTxt.style.borderColor = "#ccc";
-
-    if (messageTxtA.value === "") {
-        stop = true;
-        messageTxtA.style.borderColor = "red";
-    } else messageTxtA.style.borderColor = "#ccc";
-
-    return stop;
-};
+function contactFormChecker(){
+    let verifyName = genericVerifyer(nameTxt);
+    let verifyEmail = genericVerifyer(emailTxt);
+    let verifyMessage = genericVerifyer(messageTxtA);
+    return verifyName || verifyEmail || verifyMessage;
+}
 
 //funcion de reemplazo para el submit default
 function sendMessage() {
 
-    if (verifyContactFields()) alert("Porfavor complete todos los campos"); //si "stop" es T, salta un alert 
-    else { //si "stop" es F
+    if (contactFormChecker()) alert("Porfavor complete todos los campos"); //si algun campo esta vacio, salta un alert 
+    else { //si ninguno esta vacio
         successMessage.hidden = false; //se hace visible el mensaje de exito
         //se deshabilitan los inputs y el boton de submit
         submitButton.disabled = true;
