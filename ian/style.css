@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
 }
 
-body{
+body {
     background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
 }
 
@@ -61,8 +61,13 @@ a {
     margin: 15px 0 5px;
 }
 
+.contact-box #envioExito{
+    color: green;
+    text-align: center;
+}
+
 .contact-box form input,
-.contact-box form textarea {
+textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -86,8 +91,18 @@ a {
     font-size: 16px;
 }
 
+.contact-box form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .contact-box form button:hover {
     background: #a65f24;
+}
+
+.contact-box form button:disabled:hover {
+    background: #D68C4B;
+
 }
 
 

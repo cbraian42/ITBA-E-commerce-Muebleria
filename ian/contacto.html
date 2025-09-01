@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mueblería Hermanos Jota</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.svg" type="image/x-icon">
+    <link rel="icon" href="/img/logo.svg" type="image/x-icon">
 
 </head>
 
@@ -24,15 +24,16 @@
     </header>
     <!-- Caja de contacto -->
     <div class="contact-box">
-        <form action="">
+        <form id="formContacto">
             <h1>CONTACTO</h1>
+            <p id="envioExito" hidden> Mensaje enviado con exito!</p>
             <label for="nombreTxt">Nombre</label>
-            <input type="text">
+            <input id="nombreTxt" type="text">
             <label for="mailTxt">Email</label>
-            <input type="email" id="mailTxt">
-            <label for="mensajeTxt">Mensaje</label>
-            <textarea></textarea>
-            <button type="submit">Enviar</button>
+            <input id="mailTxt" type="email" id="mailTxt">
+            <label for="mensajeTxtA">Mensaje</label>
+            <textarea id="mensajeTxtA"></textarea>
+            <button id="botonEnviar" type="submit">Enviar</button>
         </form>
     </div>
     <footer>
@@ -40,6 +41,7 @@
             © 2025 Mueblería Hermanos Jota. Todos los derechos reservados.
         </div>
     </footer>
+    <script src="/js/contacto.js"></script>
 </body>
 
 </html>
