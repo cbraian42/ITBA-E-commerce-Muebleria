@@ -6,7 +6,7 @@ const nameTxt = document.getElementById("nombreTxt");
 const emailTxt = document.getElementById("mailTxt");
 const messageTxtA = document.getElementById("mensajeTxtA");
 
-function genericVerifyer(controller) {
+function genericContactFieldsVerifyer(controller) {
     if (controller.value === "") { //se verifica si esta vacio o no
         controller.style.borderColor = "red"; //color del borde del input pasa en rojo como aviso
         return true;
@@ -24,7 +24,7 @@ function contactFormChecker(){
 }
 
 //funcion de reemplazo para el submit default
-function sendMessage() {
+function sendContactMessage() {
 
     if (contactFormChecker()) alert("Porfavor complete todos los campos"); //si algun campo esta vacio, salta un alert 
     else { //si ninguno esta vacio
