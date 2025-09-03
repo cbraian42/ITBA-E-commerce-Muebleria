@@ -1,35 +1,21 @@
-const productList = [ //lista de productos
-    {
-        id: "1",
-        name: "Aparador Uspallata",
-        price: 100000,
-        description: "",
-        image: "img/Aparador_Uspallata.png"
-    },
-    {
-        id: "2",
-        name: "Biblioteca Recoleta",
-        price: 120000,
-        description: "",
-        image: "img/Biblioteca-Recoleta.png"
-    }
-]
+async function getProducts() {
+    const response = await fetch("./data/productos.json");
+    const products = await response.json();
 
-function getProducts() { //funcion que simula la carga de los productos
+    // Simulamos un retraso de 1 segundo antes de devolver los productos
     return new Promise((resolve) => {
-        setTimeout(() => { //simula la espera de la carga de datos 
-            resolve(productList); 
-            //podriamos poner un "reject"
-            //pero siendo que es una simulacion y nunca va a fallar la solicitud
-            //no creo que haga falta
-        }, 2000);
-    })
+        setTimeout(() => {
+            resolve(products);
+        }, 1000); // 
+    });
 }
 
 async function showProducts() { //funcion que manipula el dom para crear todos los controles de las tarjetas de los productos
     const unorderedListProducts = document.getElementById("ulProductos"); //busca la ul donde van los productos
 
     const products = await getProducts(); //"carga" los productos
+
+    window.products = products; 
 
     products.forEach(product => { //crea los controles para cada producto
         let liProd = document.createElement("li");
@@ -61,4 +47,42 @@ async function showProducts() { //funcion que manipula el dom para crear todos l
     });
 }
 
-showProducts(); //lamado a la funcion 
+function filtrarProductos(texto) {
+    const ul = document.getElementById("ulProductos");
+    ul.innerHTML = ""; 
+
+    const filtrados = window.products.filter(product =>
+        product.name.toLowerCase().includes(texto.toLowerCase())
+    );
+
+    filtrados.forEach(product => {
+        let liProd = document.createElement("li");
+        let aProd = document.createElement("a");
+        let imgProd = document.createElement("img");
+        let divProd = document.createElement("div");
+        let nameProd = document.createElement("h2");
+        let priceProduct = document.createElement("p");
+
+        aProd.href = "detalle.html?id=" + product.id;
+        aProd.className = "tarjeta";
+
+        imgProd.src = product.image;
+        imgProd.alt = product.name;
+
+        divProd.className = "info";
+        nameProd.innerText = product.name;
+        priceProduct.innerText = product.price;
+
+        ul.appendChild(liProd);
+        liProd.appendChild(aProd);
+        aProd.appendChild(imgProd);
+        liProd.appendChild(divProd);
+        divProd.appendChild(nameProd);
+        divProd.appendChild(priceProduct);
+    });
+}
+document.getElementById("buscador").addEventListener("input", (e) => {
+    filtrarProductos(e.target.value);
+});
+
+showProducts(); //llamado a la funcion

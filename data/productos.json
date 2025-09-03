@@ -1,0 +1,86 @@
+[
+    {
+        "id": "1",
+        "name": "Aparador Uspallata",
+        "price": 100000,
+        "description": "",
+        "image": "img/Aparador_Uspallata.png"
+    },
+    {
+        "id": "2",
+        "name": "Biblioteca Recoleta",
+        "price": 120000,
+        "description": "",
+        "image": "img/Biblioteca-Recoleta.png"
+    },
+    {
+        "id": "3",
+        "name": "Butaca Mendoza",
+        "price": 150000,
+        "description": "",
+        "image": "img/Butaca-Mendoza.png"
+    },
+    {
+        "id": "4",
+        "name": "Sillón Copacabana",
+        "price": 180000,
+        "description": "",
+        "image": "img/Sillón-Copacabana.png"
+    },
+    {
+        "id": "5",
+        "name": "Mesa de Centro Araucaria",
+        "price": 200000,
+        "description": "",
+        "image": "img/Mesa-de-Centro-Araucaria.png"
+    },
+    {
+        "id": "6",
+        "name": "Mesa de Noche Aconcagua",
+        "price": 230000,
+        "description": "",
+        "image": "img/Mesa-de-Noche-Aconcagua.png"
+    },
+    {
+        "id": "7",
+        "name": "Sofá Patagonia",
+        "price": 250000,
+        "description": "",
+        "image": "img/sofa-patagonia.png"
+    },
+    {
+        "id": "8",
+        "name": "Mesa Comedor Pampa",
+        "price": 270000,
+        "description": "",
+        "image": "img/Mesa-Comedor-Pampa.png"
+    },
+    {
+        "id": "9",
+        "name": "Sillas Córdoba",
+        "price": 300000,
+        "description": "",
+        "image": "img/Sillas-Cordoba.png"
+    },
+    {
+        "id": "10",
+        "name": "Escritorio Costa",
+        "price": 330000,
+        "description": "",
+        "image": "img/Escritorio-Costa.png"
+    },
+    {
+        "id": "11",
+        "name": "Silla de Trabajo Belgrano",
+        "price": 350000,
+        "description": "",
+        "image": "img/Silla-de-Trabajo-Belgrano.png"
+    },
+    {
+        "id": "12",
+        "name": "Cama Neuquen",
+        "price": 370000,
+        "description": "",
+        "image": "img/Cama-Neuquen.png"
+    }
+]
