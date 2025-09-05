@@ -2,12 +2,7 @@ async function getProducts() {
     const response = await fetch("./data/productos.json");
     const products = await response.json();
 
-    // Simulamos un retraso de 1 segundo antes de devolver los productos
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(products);
-        }, 1000); // 
-    });
+    return products;
 }
 
 function crearTarjetaProducto(product) {
