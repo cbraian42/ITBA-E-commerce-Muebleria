@@ -48,11 +48,6 @@
   resize: none;
 }
 
-/* Botón reutilizando .btn */
-.contact-box button {
-  composes: btn;
-}
-
 .contact-box button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
