@@ -1,51 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body{
-    background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
-    
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    font-family: 'Inter', sans-serif;
-    position: sticky;
-    top: 0;
-    z-index: 1000;    /* para que quede por encima de otros elementos */
-}
-
-.sub-header {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    background-color: #87A96B;
-    padding: 10px 30px;
-    border-bottom: 2px solid #A0522D;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
-}
-.sub-header a {
-    color: #F5E6D3;        
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-
-.sub-header a:hover {
-    color: #D4A437;         
-}
-
 .buscador {
     display: flex;
     flex: 1;
@@ -79,31 +31,6 @@ header{
     background-color: #C47A6D; 
 }
 
-.carrito{
-    display: flex;
-    gap: 25px;
-}
-
-.carrito a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #A0522D;
-    font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    text-align: center;
-    width: 200px;              
-    height: 45px;              
-    background-color: #F5E6D3;
-    border-radius: 30px;        
-    transition: background-color 0.3s;
-    border: 2px solid #A0522D;
-}
-
-.carrito a:hover {
-    color: #C47A6D; 
-}
 
 .titulo {
     font-family: 'Playfair Display', Georgia, serif;
@@ -165,89 +92,6 @@ header{
   color: #A0522D;
 }
 
-footer {
-  background-color: #111;
-  color: #eee;
-  padding: 40px 20px;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-.footer-contenedor {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 60px;
-}
-
-
-.footer-identidad h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.footer-identidad p {
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.footer-programa h3,
-.footer-contacto h3,
-.footer-redes h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700; /* Bold */
-  margin-bottom: 15px;
-  font-size: 18px;
-}
-
-.footer-programa ul,
-.footer-redes ul {
-  list-style: none;
-}
-
-.footer-programa li,
-.footer-redes li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.footer-contacto p {
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.footer-contacto a {
-  color: #eee;
-  text-decoration: none;
-  font-weight: 500;
-}
-.footer-contacto a:hover {
-  text-decoration: underline;
-}
-
-.footer-redes a {
-  color: #eee;
-  text-decoration: none;
-  font-weight: 500;
-}
-.footer-redes a:hover {
-  text-decoration: underline;
-}
-
-.footer-copy {
-  border-top: 1px solid #333;
-  margin-top: 40px;
-  padding-top: 20px;
-  text-align: center;
-}
-
-.footer-copy p {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 9pt;
-  letter-spacing: 0.02em;
-  color: #aaa;
-}
 
 /* --- RESPONSIVE --- */
 

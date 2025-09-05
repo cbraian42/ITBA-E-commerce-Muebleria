@@ -1,0 +1,86 @@
+
+/* Footer */
+
+footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.footer-contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 60px;
+}
+
+
+.footer-identidad h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.footer-identidad p {
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.footer-programa h3,
+.footer-contacto h3,
+.footer-redes h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700; /* Bold */
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-programa ul,
+.footer-redes ul {
+  list-style: none;
+}
+
+.footer-programa li,
+.footer-redes li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.footer-contacto p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footer-contacto a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-contacto a:hover {
+  text-decoration: underline;
+}
+
+.footer-redes a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-redes a:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-copy p {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.02em;
+  color: #aaa;
+}

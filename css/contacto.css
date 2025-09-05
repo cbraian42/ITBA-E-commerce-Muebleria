@@ -1,36 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #fdfaf6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-body {
-    background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #D68C4B;
-}
-
 a {
     text-decoration: none;
     color: black;
     margin-right: 30px;
 }
-
-
 
 .contact-box {
     flex: 1;
@@ -103,11 +75,4 @@ textarea {
 .contact-box form button:disabled:hover {
     background: #D68C4B;
 
-}
-
-
-footer {
-    background: #D68C4B;
-    text-align: center;
-    padding: 10px;
 }
