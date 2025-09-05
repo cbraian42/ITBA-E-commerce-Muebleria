@@ -1,27 +1,36 @@
 /* Botones */
 .btn {
-  display: inline-block;
-  background: var(--color-secundario);
+  background-color: var(--color-primario);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s;
-  font-weight: 500;
+  padding: 18px 40px;
+  margin: 0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(160, 82, 45, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 .btn:hover {
-  background: var(--color-primario);
+  background-color: var(--color-acento);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 164, 55, 0.4);
 }
-
 /* Logo */
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primario);
+  /* Para controlar el tamaño y disposición de las imágenes */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre las dos imágenes */
+}
+.logo img {
+  /* Controlar el tamaño de las imágenes */
+  height: 40px; /* o el tamaño que prefieras */
+  width: auto; /* Mantiene las proporciones */
 }
 /* Carrito */
 .cart {
   position: relative;
+  color: white !important;
 }
 /* Contador */
 .contador {

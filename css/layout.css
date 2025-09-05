@@ -1,8 +1,10 @@
 /* header.css */
 header {
   padding: 1rem 2rem;
-  background-color: var(--color-acento);
+  background-color: var(--color-fondo);
+  border-bottom: 2px solid var(--color-secundario);
 }
+/* Navegación */
 nav ul {
   list-style: none;
   display: flex;
@@ -13,9 +15,18 @@ nav a {
   font-weight: 500;
   transition: color 0.3s;
 }
-nav a:hover,
-nav a.active {
-  color: #fff;
+nav ul li a {
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+nav ul li a:hover {
+  color: var(--color-claro);
+}
+
+nav ul li a.active {
+  color: var(--color-secundario);
+  border-bottom: 2px solid var(--color-secundario);
 }
 /* Responsive */
 @media (max-width: 768px) {
@@ -39,7 +50,8 @@ nav a.active {
 
 /* Footer */
 footer {
-  background-color: var(--color-oscuro);
+  border-top: 2px solid var(--color-secundario);
+  background-color: var(--color-fondo);
   color: var(--color-claro);
   padding: 40px 20px;
 }
@@ -78,19 +90,4 @@ footer h3 {
   font-size: 9pt;
   letter-spacing: 0.02em;
   color: #aaa;
-}
-
-
-/* Utilidades de layout */
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-.text-center {
-  text-align: center;
 }

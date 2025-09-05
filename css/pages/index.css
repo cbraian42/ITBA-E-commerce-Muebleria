@@ -1,72 +1,128 @@
-/* Hero */
+/* ===== HERO ===== */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 1rem;
-  background-color: var(--color-fondo);
+  padding: 3rem 1rem;
+  min-height: 70vh;
+  justify-content: center;
 }
-
 .hero-texto {
-  max-width: 500px;
+  max-width: 90%;
+  margin-bottom: 2rem;
+}
+.hero-texto h1 {
+  font-size: 2.5rem; /* Ajuste para móvil */
   margin-bottom: 1rem;
 }
-
-.hero-texto h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.hero-texto p {
+  color: var(--color-secundario);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
 }
 
 .hero-imagen img {
-  max-width: 80%;
-  border-radius: 12px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Productos destacados */
-.productos {
-  padding: 2rem 1rem;
+/* ===== PRODUCTOS DESTACADOS (MÓVIL) ===== */
+.productosDestacados {
+  padding: 3rem 1rem;
   text-align: center;
 }
-.productos h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+.productosDestacados h2 {
+  margin-bottom: 2rem;
 }
-.grid {
+.productos {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
+
 .producto {
-  background: #fff;
-  padding: 1rem;
+  background-color: var(--color-fondo);
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+.producto:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-secundario);
+  box-shadow: 0 8px 25px rgba(135, 169, 107, 0.15);
 }
 .producto img {
-  max-width: 100%;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Responsive */
+.producto h3 {
+  margin-bottom: 0.5rem;
+}
+.producto p {
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
+  /* Hero */
   .hero {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 95vw;
-    margin: 0 auto;
-    gap: 2rem;
+    gap: 4rem;
+    text-align: left;
+    padding: 5rem 2rem;
+    min-height: 80vh;
+  }
+  .hero-texto {
+    flex: 1;
+    max-width: none;
+    margin-bottom: 0;
+  }
+  .hero-texto h1 {
+    margin-bottom: 1.5rem;
+  }
+  .hero-texto p {
+    margin-bottom: 2.5rem;
   }
 
-  .grid {
+  .hero-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-imagen img {
+    max-width: 100%;
+  }
+  
+  /* Productos */
+  .productosDestacados {
+    padding: 5rem 2rem;
+  }
+  .productos {
     flex-direction: row;
+    gap: 2rem;
+    max-width: 1200px;
     justify-content: center;
   }
-
   .producto {
     flex: 1;
-    max-width: 300px;
+    max-width: 350px;
+    padding: 2rem;
+  }
+  
+  .producto img {
+    height: 250px;
   }
 }
