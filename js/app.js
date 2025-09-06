@@ -77,7 +77,7 @@ function contadorCarrito() {
     // Calcular total de cantidades
     let total = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
 
-    // Mostrar en el span
+    // Mostrar
     const contadorCarrito = document.getElementById("spanContadorCarrito");
     if (contadorCarrito) {
         contadorCarrito.innerText = total;
