@@ -16,16 +16,9 @@
   box-shadow: 0 6px 20px rgba(212, 164, 55, 0.4);
 }
 /* Logo */
-.logo {
-  /* Para controlar el tamaño y disposición de las imágenes */
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Espacio entre las dos imágenes */
-}
-.logo img {
-  /* Controlar el tamaño de las imágenes */
-  height: 40px; /* o el tamaño que prefieras */
-  width: auto; /* Mantiene las proporciones */
+#imglogo{
+  width: 120px;
+  height: auto;
 }
 /* Carrito */
 .cart {
