@@ -1,6 +1,7 @@
 # ITBA E-commerce Mueblería
 
-Proyecto **fullstack** desarrollado como parte de la cursada.
+  - Proyecto **fullstack** desarrollado como parte de la cursada.
+  - Deployeado en: https://cbraian42.github.io/ITBA-E-commerce-Muebleria/
 
 ---
 
@@ -14,12 +15,15 @@ Proyecto **fullstack** desarrollado como parte de la cursada.
 ---
 
 ## Funcionalidades implementadas
+  - Index con carga dinamica
   - Listado de productos
   - Carrito de compras
-  - Filtros por categoría
   - Detalle de producto
+  - Formulario de contacto
+  
 
 ---
 
 ## Tecnologías utilizadas
 - **Frontend:** HTML, CSS, JavaScript
+- **Deploy:** Github-pages
