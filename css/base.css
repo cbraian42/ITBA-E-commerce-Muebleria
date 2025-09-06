@@ -137,6 +137,17 @@ blockquote {
     cursor: pointer;
     border: 2px solid #725914;
     transition: background-color .2s, color .2s;
+    
+}
+
+.productos-tarjeta .info .producto-agregar:hover{
+  background-color: #725914;
+  color: #ffffff;
+  
+  
+    
+
+    
 }
 
 
