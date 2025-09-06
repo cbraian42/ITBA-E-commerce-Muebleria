@@ -1,49 +1,68 @@
+// ======= CARGA DE PRODUCTOS =======
+
 async function getProducts() {
     const response = await fetch("./data/productos.json");
     const products = await response.json();
 
-    return products;
+    // Simular retardo de red
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products);
+        }, 500); // 500 ms
+    });
 }
 
-function crearTarjetaProducto(product) {
-    let liProd = document.createElement("li");
-    let aProd = document.createElement("a");
-    let imgProd = document.createElement("img");
-    let divProd = document.createElement("div");
-    let nameProd = document.createElement("h2");
-    let priceProduct = document.createElement("p");
+// ======= CREAR TARJETA DE PRODUCTO =======
 
+function crearTarjetaProducto(product) {
+    // Elementos
+    const liProd = document.createElement("li");
+    const aProd = document.createElement("a");
+    const imgProd = document.createElement("img");
+    const divProd = document.createElement("div");
+    const nameProd = document.createElement("h2");
+    const priceProduct = document.createElement("p");
+
+    // Enlace a detalle
     aProd.href = "detalle.html?id=" + product.id;
     aProd.className = "tarjeta";
 
+    // Imagen
     imgProd.src = product.image;
     imgProd.alt = product.name;
 
+    // Información
     divProd.className = "info";
     nameProd.innerText = product.name;
-    priceProduct.innerText = product.price;
+    priceProduct.innerText = `$${product.price.toLocaleString('es-AR')}`;
+    priceProduct.className = "precio";
 
+    // Estructura DOM
     liProd.appendChild(aProd);
     aProd.appendChild(imgProd);
     liProd.appendChild(divProd);
     divProd.appendChild(nameProd);
     divProd.appendChild(priceProduct);
 
-    return liProd; 
+    return liProd;
 }
 
-async function showProducts() { //funcion que manipula el dom para crear todos los controles de las tarjetas de los productos
-    const unorderedListProducts = document.getElementById("ulProductos"); //busca la ul donde van los productos
+// ======= MOSTRAR PRODUCTOS EN LA PÁGINA =======
 
-    const products = await getProducts(); //"carga" los productos
+async function showProducts() {
+    const ulProductos = document.getElementById("ulProductos");
+    const products = await getProducts();
 
-    window.products = products;  //guardamos globalmente para buscador
+    // Guardar global para buscador
+    window.products = products;
 
-    products.forEach((product) => {
-        unorderedListProducts.appendChild(crearTarjetaProducto(product));
+    // Crear tarjetas
+    products.forEach(product => {
+        ulProductos.appendChild(crearTarjetaProducto(product));
     });
 }
 
+// ======= FILTRAR PRODUCTOS =======
 
 function filtrarProductos(texto) {
     const ul = document.getElementById("ulProductos");
@@ -58,8 +77,12 @@ function filtrarProductos(texto) {
     });
 }
 
+// ======= EVENTO DEL BUSCADOR =======
+
 document.getElementById("buscador").addEventListener("input", (e) => {
     filtrarProductos(e.target.value);
 });
 
-showProducts(); //llamado a la funcion
+// ======= INICIALIZACIÓN =======
+
+showProducts();

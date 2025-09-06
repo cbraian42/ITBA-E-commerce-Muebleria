@@ -87,30 +87,51 @@ html {
 footer {
   border-top: 2px solid var(--color-secundario);
   background-color: var(--color-fondo);
-  color: var(--color-claro);
+  color: #000; /* letras negras */
   padding: 2rem 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
 }
+
 .footer-contenedor {
   display: grid;
   grid-template-columns: 1fr; /* Mobile por defecto: una columna */
   gap: 2rem;
 }
+
 footer h2,
 footer h3 {
   margin-bottom: 0.5rem;
+  color: #000; /* títulos en negro */
 }
+
 .footer-programa ul,
 .footer-redes ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.footer-programa li,
+.footer-redes li {
+  line-height: 1.6;
+  color: #000; /* elementos de lista en negro */
+}
+
 .footer-contacto a,
 .footer-redes a {
-  color: var(--color-claro);
+  color: #000; /* enlaces en negro */
   text-decoration: none;
 }
+
 .footer-contacto a:hover,
 .footer-redes a:hover {
   text-decoration: underline;
+}
+
+.footer-contacto p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #000; /* párrafos en negro */
 }
 
 .footer-copy {
@@ -119,9 +140,10 @@ footer h3 {
   padding-top: 1rem;
   text-align: center;
 }
+
 .footer-copy p {
   letter-spacing: 0.02em;
-  color: #aaa;
+  color: #000; /* texto de copyright en negro */
 }
 
 /* ===== RESPONSIVE ===== */

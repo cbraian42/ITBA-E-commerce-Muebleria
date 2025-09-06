@@ -109,6 +109,24 @@ blockquote {
   margin: 1.5rem 0;
 }
 
+/* ===== NOMBRES Y PRECIOS DE PRODUCTOS ===== */
+
+/* ===== PRODUCTOS ===== */
+.productos-tarjeta .info h2 {
+    color: #333;       /* nombre gris oscuro */
+    font-size: 1.3rem; /* igual que antes */
+    font-weight: 700;  /* más grueso como se veía antes */
+    margin: 5px 0;
+}
+
+/* Precio destacado */
+.productos-tarjeta .info .precio {
+    color: var(--color-primario);
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+
 /* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
   h1 {
