@@ -45,7 +45,7 @@ function crearTarjetaProducto(product) {
     const btnAgregar = document.createElement("button");
 
     // Enlace a detalle
-    aProd.href = "detalle.html?id=" + product.id;
+    aProd.href = "producto.html?id=" + product.id;
     aProd.className = "tarjeta";
 
     // Imagen
