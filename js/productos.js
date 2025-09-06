@@ -24,7 +24,7 @@ function crearTarjetaProducto(product) {
     const priceProduct = document.createElement("p");
 
     // Enlace a detalle
-    aProd.href = "detalle.html?id=" + product.id;
+    aProd.href = "producto.html?id=" + product.id;
     aProd.className = "tarjeta";
 
     // Imagen
