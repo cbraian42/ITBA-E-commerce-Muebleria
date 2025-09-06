@@ -4,18 +4,22 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 3rem 1rem;
-  min-height: 70vh;
+  padding: 1rem;
   justify-content: center;
+  min-height: 85vh;
+  max-height: 95vh;
 }
+
 .hero-texto {
   max-width: 90%;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
 }
+
 .hero-texto h1 {
-  font-size: 2.5rem; /* Ajuste para móvil */
   margin-bottom: 1rem;
 }
+
 .hero-texto p {
   color: var(--color-secundario);
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -23,15 +27,28 @@
   margin-bottom: 2rem;
 }
 
-.hero-imagen img {
-  max-width: 90%;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+.hero-imagen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 50vh;
+  width: 100%;
 }
 
-/* ===== PRODUCTOS DESTACADOS (MÓVIL) ===== */
+.hero-imagen img {
+  max-width: 85%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+}
+
+/* ===== PRODUCTOS DESTACADOS ===== */
 .productosDestacados {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
 .productosDestacados h2 {
@@ -79,36 +96,39 @@
   /* Hero */
   .hero {
     flex-direction: row;
-    gap: 4rem;
     text-align: left;
-    padding: 5rem 2rem;
-    min-height: 80vh;
   }
+  
   .hero-texto {
+    display: flex;
     flex: 1;
-    max-width: none;
-    margin-bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
   }
-  .hero-texto h1 {
-    margin-bottom: 1.5rem;
-  }
+  
   .hero-texto p {
     margin-bottom: 2.5rem;
   }
 
   .hero-imagen {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    flex: 1; /* 50% del ancho */
     align-items: center;
+    justify-content: center;
+    padding: 2rem;
   }
   .hero-imagen img {
-    max-width: 100%;
+    max-width: 80%; /* Solo usa 80% del espacio disponible */
+    max-height: 70vh; /* No más alto que 70% de la ventana */
+    object-fit: contain; /* Mantiene proporciones */
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
   
   /* Productos */
   .productosDestacados {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
   }
   .productos {
     flex-direction: row;
