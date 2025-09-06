@@ -33,6 +33,7 @@ body {
   font-weight: var(--weight-regular);
   line-height: 1.6;
   color: #333;
+  /*imagen de fondo*/
   background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
 }
 

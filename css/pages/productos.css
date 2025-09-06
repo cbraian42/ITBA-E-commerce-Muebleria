@@ -1,23 +1,39 @@
+/* ===== DISEÑO MOBILE-FIRST ===== */
+
 /* Título */
 .titulo {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 2.5rem;
   text-align: center;
-  margin: 40px 0 20px;
+  margin: 0;
   color: var(--color-primario);
   -webkit-text-stroke: 0.5px black;
 }
 
-/* Tarjetas de productos */
+/* Buscador */
+.buscador {
+  display: flex;
+  align-items: center;
+  max-width: 90%; /* Ancho ajustado para móvil */
+  border: 2px solid var(--color-primario);
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 10px auto;
+}
+.buscador input {
+  text-align: center;
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color: var(--color-fondo);
+}
+
+/* Tarjetas de productos: por defecto, una sola columna */
 .productos-tarjeta {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr; /* Una columna por defecto */
   gap: 20px;
-  row-gap: 100px;
-  padding: 20px 100px;
+  row-gap: 50px;
+  padding: 20px;
   list-style: none;
 }
 
@@ -49,14 +65,44 @@
 }
 
 .info h2 {
-  font-size: 1.3rem;
   margin: 5px 0;
   color: var(--color-primario);
 }
 
 .info p {
   font-weight: bold;
-  font-size: 2.5rem;
-  margin-top: 10px;
+  font-size: 1.5rem; /* Tamaño de fuente para móvil */
+  margin-top: 5px;
   color: var(--color-secundario);
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 768px) {
+  .titulo {
+    margin: 0;
+  }
+  
+  .productos-tarjeta {
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+    gap: 20px;
+    row-gap: 100px;
+    padding: 20px 100px;
+  }
+  
+  .info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .info p {
+    font-size: 2.5rem;
+  }
+  
+  .buscador {
+    max-width: 50vmax;
+    margin: 10px auto;
+  }
+  .buscador input{
+    line-height: 1.6;
+    font-size: 17px;
+  }
 }

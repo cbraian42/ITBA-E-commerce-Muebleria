@@ -36,24 +36,3 @@
   top: -8px;
   right: -12px;
 }
-
-/* Buscador */
-.buscador {
-  display: flex;
-  align-items: center;
-  max-width: 500px;
-  border: 2px solid var(--color-primario);
-  border-radius: 30px;
-  overflow: hidden;
-  margin: 06px auto;
-}
-.buscador input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  outline: none;
-  font-size: 17px;
-  background-color: var(--color-fondo);
-  font-family: 'Inter', sans-serif; 
-  line-height: 1.6;
-}
