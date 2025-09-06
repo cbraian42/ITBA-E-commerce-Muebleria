@@ -71,13 +71,19 @@ function marcarEnlaceActivo() {
 
 // Funcion que crea la variable de sesion para el contador del carrito
 function contadorCarrito() {
-    if (sessionStorage.getItem("contadorCarrito") === null) { //si no existe
-        sessionStorage.setItem("contadorCarrito", 0);         //se crea
-    }
-    //se setea en el carrito
+    // Leer productos del localStorage
+    let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
+
+    // Calcular total de cantidades
+    let total = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+
+    // Mostrar en el span
     const contadorCarrito = document.getElementById("spanContadorCarrito");
-    contadorCarrito.innerText = parseInt(sessionStorage.getItem("contadorCarrito"));
+    if (contadorCarrito) {
+        contadorCarrito.innerText = total;
+    }
 }
+
 
 // Cargar header y footer automáticamente
 // Y luego inicializar todo
