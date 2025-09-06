@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const idProducto = params.get("id");
 
   try {
-    const response = await fetch("../data/productos.json");
+    const response = await fetch("./data/productos.json");
     const productos = await response.json();
 
     const producto = productos.find(item => item.id === idProducto);
