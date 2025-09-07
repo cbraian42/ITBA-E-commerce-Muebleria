@@ -1,3 +1,23 @@
+//funcion para cargar la tabla dependiendo de las caracs del producto
+function cargarTablaCaracteristicas(producto) {
+  const cuerpoTabla = document.getElementById("tabla-caracteristicas").querySelector("tbody");
+  producto.features.forEach(carac => {
+    const fila = document.createElement("tr");
+
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent = carac.name;
+
+    const tdValor = document.createElement("td");
+    tdValor.textContent = carac.value;
+
+    fila.appendChild(tdNombre);
+    fila.appendChild(tdValor);
+
+    cuerpoTabla.appendChild(fila);
+  });
+
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const idProducto = params.get("id");
@@ -16,7 +36,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("producto-descripcion").textContent = producto.description || "Sin descripción disponible";
     document.getElementById("producto-imagen").src = producto.image;
     document.getElementById("producto-imagen").alt = `Imagen de ${producto.name}`;
-
+    //tabla de caracteristicas
+    cargarTablaCaracteristicas(producto);
     // Evento del botón
     document.getElementById("agregar-carrito").addEventListener("click", () => {
       agregarAlCarrito(producto);
