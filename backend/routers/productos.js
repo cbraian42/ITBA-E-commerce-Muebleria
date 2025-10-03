@@ -11,14 +11,33 @@ const leerProductos = async ()=>{
     return JSON.parse(data);
 };
 
-//funcion para "en un futuro" agregar productos
+// GET → Todos los productos
+productosRouter.get("/", async (req, res, next) => {
+  try {
+    const productos = await leerProductos();
+    res.json(productos);
+  } catch (error) {
+    next(error); // lo enviamos al manejador de errores central
+  }
+});
 
-//GET para todos los productos
-//ruta "/"
+// GET → Producto específico por ID
+productosRouter.get("/:id", async (req, res, next) => {
+  try {
+    const productos = await leerProductos();
+    // Convertir el ID de la URL a número y guardarlo en una variable
+    const idBuscado = parseInt(req.params.id);
+    // Usar find() y asegurar que AMBOS ID sean números para la comparación
+    const producto = productos.find(p => parseInt(p.id) === idBuscado);
+    // --- Lógica de respuesta ---
+    if (!producto) {
+      return res.status(404).json({ error: "Producto no encontrado" });
+    }
+    res.json(producto);
+  } catch (error) {
+    next(error);
+  }
+});
 
-//GET para producto especifico via ID
-// ruta "/:id"
-
-//POST para "en un futuro" agregar productos
 
 module.exports = {productosRouter};
