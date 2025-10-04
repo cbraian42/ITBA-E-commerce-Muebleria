@@ -1,37 +1,32 @@
-import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
 
-function ProductList() {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+import React from 'react';
+import ProductCard from './ProductCard';
 
-  useEffect(() => {
-    fetch("http://localhost:4000/api/productos")
-      .then(res => {
-        if (!res.ok) throw new Error("Error al cargar productos");
-        return res.json();
-      })
-      .then(data => {
-        setProductos(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
-
+const ProductList = ({ products, loading, error, onProductClick }) => {
   if (loading) return <p>Cargando productos...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <p style={{ color: 'red' }}>Error: {error}</p>;
+  
+  // ✅ Protección adicional: por si es un array
+  if (!Array.isArray(products) || products.length === 0) {
+    return <p>No se encontraron productos.</p>;
+  }
 
   return (
-    <div>
-      {productos.map(p => (
-        <ProductCard key={p.id} producto={p} />
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+      gap: '2rem',
+      padding: '2rem'
+    }}>
+      {products.map(product => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          onClick={() => onProductClick(product)}
+        />
       ))}
     </div>
   );
-}
+};
 
 export default ProductList;

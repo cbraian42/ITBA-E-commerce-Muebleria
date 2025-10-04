@@ -1,13 +1,221 @@
+/* src/index.css */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fdfaf5; /* crema suave */
+  color: #2c1810; /* marrón oscuro */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #1a0f0a;
+}
+
+.App {
+  text-align: center;
+}
+.hero {
+  padding: 3rem 2rem;
+  background-color: white;
+  margin: 1.5rem auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  color: #1a0f0a;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #5a4a42;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar h1 {
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar button {
+  background: transparent;
+  border: 1px solid #8b5a2b;
+  color: #8b5a2b;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s;
+}
+
+.navbar button:hover {
+  background-color: #8b5a2b;
+  color: white;
+}
+
+/* Hero Section (opcional, pero inspirado en la web) */
+.hero {
+  padding: 3rem 2rem;
+  background-color: white;
+  margin: 1.5rem auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  color: #1a0f0a;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #5a4a42;
+  font-weight: 300;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0.8rem 0.4rem;
+}
+
+.product-card p {
+  color: #6b5e57;
+  padding: 0 0.8rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.product-card strong {
+  display: block;
+  margin: 0 0.8rem 1rem;
+  color: #8b5a2b;
+  font-size: 1.2rem;
+}
+
+/* Product Detail */
+.product-detail {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.product-detail img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: #8b5a2b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #6a4520;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #8b5a2b;
+  color: #8b5a2b;
+}
+
+.btn-secondary:hover {
+  background-color: #fdf6ee;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #f8f4ed;
+  color: #6b5e57;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+/* Formulario de contacto */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.6rem 0;
+  border: 1px solid #d5c8b8;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contact-form label {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #2c1810;
 }

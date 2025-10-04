@@ -1,10 +1,23 @@
-function ProductCard({ producto }) {
+
+import React from 'react';
+
+const ProductCard = ({ product, onClick }) => {
+  // Protección: si product es undefined o null, no renderizar
+  if (!product) {
+    return null;
+  }
+
   return (
-    <div style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
-      <h3>{producto.name}</h3>
-      <p>Precio: ${producto.price}</p>
+    <div className="product-card" onClick={onClick}>
+      <img
+        src={`/${product.imagen}`}  
+        alt={product.nombre || 'Producto'}
+      />
+      <h3>{product.nombre}</h3>
+      <p>{product.descripcion}</p>
+      <strong>${product.precio?.toLocaleString() || 'N/A'}</strong>
     </div>
   );
-}
+};
 
 export default ProductCard;
