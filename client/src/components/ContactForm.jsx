@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = ({ onSubmit, onBack }) => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -21,6 +21,9 @@ const ContactForm = ({ onSubmit }) => {
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto' }}>
       <h2>Formulario de Contacto</h2>
+      <button onClick={onBack} style={{ marginBottom: '1rem' }}>
+        ← Volver al catálogo
+      </button>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '1rem' }}>
           <label>Nombre:</label>

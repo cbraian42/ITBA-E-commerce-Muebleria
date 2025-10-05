@@ -17,7 +17,6 @@ const ProductList = ({ products, loading, error, onProductClick }) => {
       gap: '2rem',
       padding: '2rem'
     }}>
-      {console.log(products)}
       {products.map(product => (
         <ProductCard
           key={product.id}

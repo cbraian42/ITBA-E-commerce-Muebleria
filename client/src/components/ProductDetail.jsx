@@ -1,4 +1,5 @@
 import React from 'react';
+import images from '../img';
 
 const ProductDetail = ({ product, onBack, onAddToCart }) => {
   return (
@@ -8,16 +9,30 @@ const ProductDetail = ({ product, onBack, onAddToCart }) => {
       </button>
       <div style={{ display: 'flex', gap: '2rem' }}>
         <img
-          src={product.imagen || 'https://via.placeholder.com/400?text=Producto'}
-          alt={product.nombre}
+          src={images[product.image]}
+          alt={product.name}
           style={{ width: '400px', height: '400px', objectFit: 'cover', borderRadius: '8px' }}
         />
         <div>
-          <h2>{product.nombre}</h2>
-          <p>{product.descripcion}</p>
-          <h3>Precio: ${product.precio}</h3>
-          <p><strong>Material:</strong> {product.material}</p>
-          <p><strong>Disponible:</strong> {product.disponible ? 'Sí' : 'No'}</p>
+          <h2>{product.name}</h2>
+          <p>{product.description}</p>
+          <h3>Precio: ${product.price?.toLocaleString()}</h3>
+          <table>
+            <thead>
+              <tr>
+                {product.features.map((feature, index) => (
+                  <th key={index}>{feature.name}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {product.features.map((feature, index) => (
+                  <td key={index}>{feature.value}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
           <button
             onClick={() => onAddToCart(product)}
             style={{

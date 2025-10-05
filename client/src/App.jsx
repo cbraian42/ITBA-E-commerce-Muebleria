@@ -35,10 +35,13 @@ function App() {
 
   const handleAddToCart = (product) => {
     setCart(prev => [...prev, product]);
+    console.log(cart);
   };
 
   const handleBackToList = () => {
-    setSelectedProduct(null);
+    setSelectedProduct(false);
+    setShowContact(false);
+
   };
 
   const handleShowContact = () => {
@@ -58,7 +61,7 @@ function App() {
 
       <main style={{ padding: '20px', minHeight: '70vh' }}>
         {showContact ? (
-          <ContactForm onSubmit={handleContactSubmit} />
+          <ContactForm onSubmit={handleContactSubmit} onBack={handleBackToList} />
         ) : selectedProduct ? (
           <ProductDetail
             product={selectedProduct}
