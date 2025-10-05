@@ -52,7 +52,7 @@ function App() {
   };
 
   return (
-    
+
     <div className="App">
       <Navbar cartCount={cart.length} onContactClick={handleShowContact} />
 

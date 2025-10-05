@@ -6,7 +6,6 @@ const ProductList = ({ products, loading, error, onProductClick }) => {
   if (loading) return <p>Cargando productos...</p>;
   if (error) return <p style={{ color: 'red' }}>Error: {error}</p>;
   
-  // ✅ Protección adicional: por si es un array
   if (!Array.isArray(products) || products.length === 0) {
     return <p>No se encontraron productos.</p>;
   }
@@ -18,6 +17,7 @@ const ProductList = ({ products, loading, error, onProductClick }) => {
       gap: '2rem',
       padding: '2rem'
     }}>
+      {console.log(products)}
       {products.map(product => (
         <ProductCard
           key={product.id}
