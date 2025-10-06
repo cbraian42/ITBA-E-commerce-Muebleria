@@ -1,7 +1,6 @@
 # ITBA E-commerce Mueblería
 
   - Proyecto **fullstack** desarrollado como parte de la cursada.
-  - Deployeado en: https://cbraian42.github.io/ITBA-E-commerce-Muebleria/
 
 ---
 
@@ -14,16 +13,14 @@
 
 ---
 
-## Funcionalidades implementadas
-  - Index con carga dinamica
-  - Listado de productos
-  - Carrito de compras
-  - Detalle de producto
-  - Formulario de contacto
+## Instrucciones
+  - Instalar dependencias del backend:cd backend npm install
+  - Levantar el servidor backend: npm run dev
+  - Instalar dependencias del frontend (En una nueva terminal): cd client npm install
+  - Levantar el servidor frontend: npm start
   
-
 ---
 
 ## Tecnologías utilizadas
-- **Frontend:** HTML, CSS, JavaScript
-- **Deploy:** Github-pages
+- **Frontend:** React
+- **Backend:** Node.js y Express
