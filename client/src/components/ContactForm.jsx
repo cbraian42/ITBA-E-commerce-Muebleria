@@ -19,55 +19,56 @@ const ContactForm = ({ onSubmit, onBack }) => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Formulario de Contacto</h2>
-      <button onClick={onBack} style={{ marginBottom: '1rem' }}>
+    <div className="contact-box"> 
+      
+      <button onClick={onBack} className="btn-volver" style={{ marginBottom: '1rem' }}>
         ← Volver al catálogo
       </button>
+
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '1rem' }}>
-          <label>Nombre:</label>
+        
+        <h1>Contáctanos</h1> 
+        
+        
+        <div>
+          <label htmlFor="nombre">Nombre:</label>
           <input
             type="text"
+            id="nombre"
             name="nombre"
             value={formData.nombre}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div style={{ marginBottom: '1rem' }}>
-          <label>Email:</label>
+        
+        <div>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
+            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div style={{ marginBottom: '1rem' }}>
-          <label>Mensaje:</label>
+        
+        <div>
+          <label htmlFor="mensaje">Mensaje:</label>
           <textarea
+            id="mensaje"
             name="mensaje"
             value={formData.mensaje}
             onChange={handleChange}
             required
             rows="5"
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
+
         <button
           type="submit"
-          style={{
-            padding: '0.75rem 1.5rem',
-            backgroundColor: '#3498db',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
+          className="btn"
         >
           Enviar
         </button>

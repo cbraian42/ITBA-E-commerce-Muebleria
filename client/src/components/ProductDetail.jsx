@@ -3,21 +3,32 @@ import images from '../img';
 
 const ProductDetail = ({ product, onBack, onAddToCart }) => {
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <button onClick={onBack} style={{ marginBottom: '1rem' }}>
+    <div className="detallemain"> 
+      
+      <button 
+        onClick={onBack} 
+        className="btn-volver" 
+        style={{ marginBottom: '1rem' }}
+      >
         ← Volver al catálogo
       </button>
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <img
-          src={images[product.image]}
-          alt={product.name}
-          style={{ width: '400px', height: '400px', objectFit: 'cover', borderRadius: '8px' }}
-        />
-        <div>
+
+      <div className="producto-detalle"> 
+        
+        <div className="producto-imagen"> 
+          <img
+            src={images[product.image]}
+            alt={product.name}
+          />
+        </div>
+
+        <div className="producto-info">
+          
           <h2>{product.name}</h2>
           <p>{product.description}</p>
           <h3>Precio: ${product.price?.toLocaleString()}</h3>
-          <table>
+          
+          <table id="tabla-caracteristicas">
             <thead>
               <tr>
                 {product.features.map((feature, index) => (
@@ -33,17 +44,11 @@ const ProductDetail = ({ product, onBack, onAddToCart }) => {
               </tr>
             </tbody>
           </table>
+
           <button
             onClick={() => onAddToCart(product)}
-            style={{
-              marginTop: '1rem',
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#27ae60',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className="btn" 
+            style={{ width: 'fit-content', marginTop: '1rem' }}
           >
             Añadir al Carrito
           </button>

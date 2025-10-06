@@ -74,6 +74,7 @@ function App() {
             loading={loading}
             error={error}
             onProductClick={handleProductClick}
+            onAddToCart={handleAddToCart}
           />
         )}
       </main>

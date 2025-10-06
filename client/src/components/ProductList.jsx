@@ -1,8 +1,7 @@
-
 import React from 'react';
 import ProductCard from './ProductCard';
 
-const ProductList = ({ products, loading, error, onProductClick }) => {
+const ProductList = ({ products, loading, error, onProductClick, onAddToCart }) => {
   if (loading) return <p>Cargando productos...</p>;
   if (error) return <p style={{ color: 'red' }}>Error: {error}</p>;
   
@@ -11,17 +10,13 @@ const ProductList = ({ products, loading, error, onProductClick }) => {
   }
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-      gap: '2rem',
-      padding: '2rem'
-    }}>
+    <div className="productos-tarjeta"> 
       {products.map(product => (
         <ProductCard
           key={product.id}
           product={product}
           onClick={() => onProductClick(product)}
+          onAddToCart={onAddToCart}
         />
       ))}
     </div>
