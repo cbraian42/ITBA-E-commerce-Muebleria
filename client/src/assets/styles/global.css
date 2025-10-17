@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* ===== VARIABLES ===== */
+:root {
+    /* Colores */
+    --color-primario: #A0522D;
+    --color-secundario: #87A96B;
+    --color-fondo: #F5E6D3;
+    --color-acento: #D4A437;
+    --color-claro: #C47A6D;
+
+    /* Tipografías */
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-secondary: 'Playfair Display', Georgia, serif;
+
+    /* Pesos */
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+}
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== TIPOGRAFÍA BASE ===== */
+body {
+    font-family: var(--font-primary);
+    font-weight: var(--weight-regular);
+    line-height: 1.6;
+    color: #333;
+    background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-marmol-beige-grisaceo_53876-124564.jpg?semt=ais_hybrid&w=740&q=80);
+}
