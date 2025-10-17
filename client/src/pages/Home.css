@@ -1,84 +1,124 @@
+/* Estilos base para móvil */
 /* Hero Section */
 .hero {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 2rem;
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 2rem 1rem;
 }
-
 .hero-texto {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  text-align: center;
 }
-
-
+.hero-texto h1 {
+  color: var(--color-primario);
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+.hero-texto p {
+  color: var(--color-secundario);
+  font-size: 1rem;
+  line-height: 1.6;
+}
 .btn {
   display: inline-block;
-  padding: 0.8rem 2rem;
-  background-color: #8B4513;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primario);
   color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-  width: fit-content;
+  text-align: center;
   transition: background-color 0.3s;
 }
-
 .btn:hover {
-  background-color: #A0522D;
+  background-color: var(--color-claro);
 }
 
 .hero-imagen {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-
 .hero-imagen img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Productos Destacados Section */
+/* Productos Destacados Section - MÓVIL */
 .productosDestacados {
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
 }
-
 .productosDestacados h2 {
+  color: var(--color-primario);
   text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .productos {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ESCRITORIO - 768px+ */
+@media (min-width: 768px) {
+  /* Hero Section */
   .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-texto {
+    flex: 1;
+    text-align: left;
+    gap: 1.5rem;
   }
 
   .hero-texto h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .hero-texto p {
+    font-size: 1.2rem;
   }
 
   .btn {
-    width: 100%;
-    text-align: center;
+    width: fit-content;
+  }
+
+  .hero-imagen {
+    flex: 1;
+  }
+
+  /* Productos en grid */
+  .productos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .productosDestacados {
+    padding: 4rem 2rem;
+  }
+
+  .productosDestacados h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
