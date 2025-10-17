@@ -1,6 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-
-import './assets/styles/global.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
