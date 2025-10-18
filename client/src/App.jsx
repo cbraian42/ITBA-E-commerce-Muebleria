@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { CartProvider } from './context/CartContext'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
@@ -9,7 +10,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,7 +20,7 @@ function App() {
         <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
       </Routes>
       <Footer />
-    </>
+    </CartProvider>
   )
 }
 

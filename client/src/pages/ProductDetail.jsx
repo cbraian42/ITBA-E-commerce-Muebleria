@@ -25,11 +25,6 @@ export default function ProductDetail() {
     fetchProduct();
   }, [id]);
 
-  const handleAddToCart = (productWithQuantity) => {
-    // Lógica para agregar al carrito (ej. context, localStorage, etc.)
-    console.log('Producto agregado:', productWithQuantity);
-  };
-
   if (loading) {
     return (
       <div className="product-detail-loading">
@@ -56,5 +51,5 @@ export default function ProductDetail() {
     );
   }
 
-  return <ProductDetailComponent product={product} onAddToCart={handleAddToCart} />;
+  return <ProductDetailComponent product={product} />;
 }

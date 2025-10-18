@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import images from '../assets/images';
 import './ProductDetail.css';
 
-const ProductDetail = ({ product, onAddToCart }) => {
+const ProductDetail = ({ product }) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [addedToCart, setAddedToCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -12,8 +14,8 @@ const ProductDetail = ({ product, onAddToCart }) => {
   const stock = product.stock ?? 10;
 
   const handleAddToCart = () => {
-    if (onAddToCart && product) {
-      onAddToCart({ ...product, quantity });
+    if (product) {
+      addToCart({ ...product, quantity });
       setAddedToCart(true);
       setTimeout(() => setAddedToCart(false), 2000);
     }
