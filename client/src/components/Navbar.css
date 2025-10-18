@@ -110,6 +110,10 @@
   .navbar-menu li a {
     font-size: 1rem;
   }
+  nav a.active {
+    border-bottom: 2px solid var(--color-secundario);
+    color: var(--color-secundario)
+  }
 }
 
 /*css viejo para ir comparando
