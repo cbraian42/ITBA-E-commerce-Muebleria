@@ -4,7 +4,6 @@ import ButacaMendoza from './Butaca-Mendoza.png';
 import CamaNeuquen from './Cama-Neuquen.png';
 import EscritorioCosta from './Escritorio-Costa.png';
 import HermanosJota from './Hermanos-Jota.png';
-import Logo from './logo.svg';
 import MesaComedorPampa from './Mesa-Comedor-Pampa.png';
 import MesaDeCentroAraucaria from './Mesa-de-Centro-Araucaria.png';
 import MesaDeNocheAconcagua from './Mesa-de-Noche-Aconcagua.png';
@@ -20,7 +19,6 @@ const images = {
   CamaNeuquen,
   EscritorioCosta,
   HermanosJota,
-  Logo,
   MesaComedorPampa,
   MesaDeCentroAraucaria,
   MesaDeNocheAconcagua,
