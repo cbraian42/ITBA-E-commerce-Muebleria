@@ -1,8 +1,32 @@
-import { Link } from 'react-router-dom'
-import './Home.css'
-import camaNeuquen from '../assets/images/Cama-Neuquen.png'
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getProductos } from '../api';
+import ProductCard from '../components/ProductCard';
+import './Home.css';
+import camaNeuquen from '../assets/images/Cama-Neuquen.png';
 
 export default function Home() {
+    const [destacados, setDestacados] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const cargarProductos = async () => {
+            try {
+                const productos = await getProductos();
+                // Como no hay un flag "destacado", seleccionamos los primeros 4
+                setDestacados(productos.slice(0, 4));
+            } catch (error) {
+                console.error("Error al cargar productos destacados:", error);
+            }
+        };
+
+        cargarProductos();
+    }, []); // El array vacío asegura que se ejecute solo una vez
+
+    const handleProductClick = (product) => {
+        navigate(`/productos/${product.id}`);
+    };
+
     return (
         <main>
             {/* Hero Banner */}
@@ -23,8 +47,20 @@ export default function Home() {
             {/* Productos Destacados */}
             <section className="productosDestacados">
                 <h2>Productos Destacados</h2>
-                <div className="productos" id="productos-container"></div>
+                <div className="productos">
+                    {destacados.length > 0 ? (
+                        destacados.map(producto => (
+                            <ProductCard 
+                                key={producto.id} 
+                                product={producto}
+                                onClick={handleProductClick}
+                            />
+                        ))
+                    ) : (
+                        <p>Cargando productos...</p> 
+                    )}
+                </div>
             </section>
         </main>
-    )
+    );
 }

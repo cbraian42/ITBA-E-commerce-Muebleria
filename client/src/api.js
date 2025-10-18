@@ -7,6 +7,13 @@ export async function getProductos() {
   return await res.json();
 }
 
+// Obtener un producto por ID
+export async function getProducto(id) {
+  const res = await fetch(`${API_URL}/api/productos/${id}`);
+  if (!res.ok) throw new Error('Error al obtener el producto');
+  return await res.json();
+}
+
 // Crear un nuevo producto
 export async function crearProducto(data) {
   const res = await fetch(`${API_URL}/api/productos`, {
