@@ -5,6 +5,7 @@ import Catalog from './pages/Catalog'
 import Contact from './pages/Contact'
 import ProductDetail from './pages/ProductDetail'
 import AdminCreateProduct from './pages/CreateProduct'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contacto" element={<Contact />} />
         <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
       </Routes>
+      <Footer />
     </>
   )
 }
