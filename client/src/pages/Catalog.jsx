@@ -29,7 +29,7 @@ const Catalog = () => {
   };
 
   const handleProductClick = (product) => {
-    navigate(`/productos/${product.id}`);
+    navigate(`/productos/${product._id}`);
   };
 
   const handleAddToCart = (product) => {
@@ -69,7 +69,7 @@ const Catalog = () => {
             <div className="productos-grid">
               {products.map(product => (
                 <ProductCard
-                  key={product.id}
+                  key={product._id}
                   product={product}
                   onClick={() => handleProductClick(product)}
                   onAddToCart={() => handleAddToCart(product)}

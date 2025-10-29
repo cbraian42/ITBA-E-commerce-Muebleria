@@ -1,5 +1,4 @@
 import React from 'react';
-import images from '../assets/images';
 import './ProductCard.css';
 
 const ProductCard = ({ product, onClick, onAddToCart }) => {
@@ -39,7 +38,7 @@ const ProductCard = ({ product, onClick, onAddToCart }) => {
     >
       <div className="product-card-image">
         <img
-          src={images[product.image]}
+          src={product.image}
           alt={product.name}
           loading="lazy"
         />

@@ -6,8 +6,14 @@ const router = express.Router();
 // GET /api/productos  -> obtener todos
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.find().sort({ createdAt: -1 });
-    res.json(products);
+    const products = await Product.find().sort({ createdAt: -1 }).lean();
+
+    const productsWithImageUrls = products.map(p => ({
+      ...p,
+      image: p.image ? `${req.protocol}://${req.get('host')}/images/${p.image}` : null,
+    }));
+
+    res.json(productsWithImageUrls);
   } catch (err) {
     next(err);
   }
@@ -16,9 +22,12 @@ router.get('/', async (req, res, next) => {
 // GET /api/productos/:id -> obtener por id
 router.get('/:id', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).lean();
     if (!product) return res.status(404).json({ message: 'Producto no encontrado' });
-    res.json(product);
+
+    const imageUrl = product.image ? `${req.protocol}://${req.get('host')}/images/${product.image}` : null;
+
+    res.json({ ...product, image: imageUrl });
   } catch (err) {
     next(err);
   }

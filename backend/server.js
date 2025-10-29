@@ -6,6 +6,8 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js'; // 👈 Importar tu función
 import { productosRouter } from "./routers/productos.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -14,6 +16,11 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// --- Servir archivos estáticos ---
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // --- Conexión a MongoDB Atlas ---
 connectDB(); // 👈 Usar tu función centralizada

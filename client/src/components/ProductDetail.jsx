@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import images from '../assets/images';
 import './ProductDetail.css';
 
 const ProductDetail = ({ product }) => {
@@ -52,7 +51,7 @@ const ProductDetail = ({ product }) => {
       <div className="product-detail-container">
         <div className="product-detail-image">
           <img 
-            src={images[product.image]} 
+            src={product.image} 
             alt={product.name}
           />
           {stock === 0 && (

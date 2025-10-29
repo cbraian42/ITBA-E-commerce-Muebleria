@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getProductos } from '../api';
 import ProductCard from '../components/ProductCard';
 import './Home.css';
-import camaNeuquen from '../assets/images/Cama-Neuquen.png';
 
 export default function Home() {
     const [destacados, setDestacados] = useState([]);
@@ -24,7 +23,7 @@ export default function Home() {
     }, []); // El array vacío asegura que se ejecute solo una vez
 
     const handleProductClick = (product) => {
-        navigate(`/productos/${product.id}`);
+        navigate(`/productos/${product._id}`);
     };
 
     return (
@@ -38,7 +37,7 @@ export default function Home() {
                 </div>
                 <div className="hero-imagen">
                     <img
-                        src={camaNeuquen}
+                        src="http://localhost:4000/images/Cama-Neuquen.png"
                         alt="Cama Neuquén de diseño artesanal en madera"
                     />
                 </div>
@@ -51,7 +50,7 @@ export default function Home() {
                     {destacados.length > 0 ? (
                         destacados.map(producto => (
                             <ProductCard 
-                                key={producto.id} 
+                                key={producto._id} 
                                 product={producto}
                                 onClick={handleProductClick}
                             />
