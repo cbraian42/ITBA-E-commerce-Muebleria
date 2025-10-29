@@ -8,6 +8,8 @@ import { connectDB } from './config/db.js'; // 👈 Importar tu función
 import { productosRouter } from "./routers/productos.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
+import logger from './middleware/logger.js';
+import { notFoundRoute, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -25,25 +27,17 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 // --- Conexión a MongoDB Atlas ---
 connectDB(); // 👈 Usar tu función centralizada
 
+// --- Middleware logger ---
+app.use(logger);
+
 // --- Rutas principales ---
 app.use("/api/productos", productosRouter);
 
-// --- Middleware logger ---
-app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next();
-});
-
 // --- Middleware para rutas no encontradas ---
-app.use((req, res, next) => {
-  res.status(404).json({ error: "Ruta no encontrada" });
-});
+app.use(notFoundRoute);
 
 // --- Middleware de manejo de errores global ---
-app.use((err, req, res, next) => {
-  console.error("Error en el servidor:", err.message);
-  res.status(500).json({ error: "Error interno del servidor" });
-});
+app.use(errorHandler);
 
 // --- Iniciar servidor ---
 app.listen(PORT, () => {
