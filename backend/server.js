@@ -5,7 +5,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js'; // 👈 Importar tu función
-import { productosRouter } from "./routers/productos.js";
+import { productsRouter } from "./routes/productRoutes.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
 import logger from './middleware/logger.js';
@@ -31,7 +31,7 @@ connectDB(); // 👈 Usar tu función centralizada
 app.use(logger);
 
 // --- Rutas principales ---
-app.use("/api/productos", productosRouter);
+app.use("/api/productos", productsRouter);
 
 // --- Middleware para rutas no encontradas ---
 app.use(notFoundRoute);
