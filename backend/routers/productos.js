@@ -1,43 +1,60 @@
-const express = require("express");
-const fs = require("fs/promises");
-const path = require("path");
-const productosRouter = express.Router();
+import express from 'express';
+import Product from '../models/Product.js'; // 👈 Agregar .js
 
-const filePath = path.join(__dirname, "../data/productos.json");
+const router = express.Router();
 
-//funcion para leer productos (del archivo json)
-const leerProductos = async ()=>{
-    const data = await fs.readFile(filePath,"utf-8");
-    return JSON.parse(data);
-};
-
-// GET → Todos los productos
-productosRouter.get("/", async (req, res, next) => {
+// GET /api/productos  -> obtener todos
+router.get('/', async (req, res, next) => {
   try {
-    const productos = await leerProductos();
-    res.json(productos);
-  } catch (error) {
-    next(error); // lo enviamos al manejador de errores central
+    const products = await Product.find().sort({ createdAt: -1 });
+    res.json(products);
+  } catch (err) {
+    next(err);
   }
 });
 
-// GET → Producto específico por ID
-productosRouter.get("/:id", async (req, res, next) => {
+// GET /api/productos/:id -> obtener por id
+router.get('/:id', async (req, res, next) => {
   try {
-    const productos = await leerProductos();
-    // Convertir el ID de la URL a número y guardarlo en una variable
-    const idBuscado = parseInt(req.params.id);
-    // Usar find() y asegurar que AMBOS ID sean números para la comparación
-    const producto = productos.find(p => parseInt(p.id) === idBuscado);
-    // --- Lógica de respuesta ---
-    if (!producto) {
-      return res.status(404).json({ error: "Producto no encontrado" });
-    }
-    res.json(producto);
-  } catch (error) {
-    next(error);
+    const product = await Product.findById(req.params.id);
+    if (!product) return res.status(404).json({ message: 'Producto no encontrado' });
+    res.json(product);
+  } catch (err) {
+    next(err);
   }
 });
 
+// POST /api/productos -> crear producto con features embebidas
+router.post('/', async (req, res, next) => {
+  try {
+    const { name, price, description, image, features } = req.body;
+    const newProduct = await Product.create({ name, price, description, image, features });
+    res.status(201).json(newProduct);
+  } catch (err) {
+    next(err);
+  }
+});
 
-module.exports = {productosRouter};
+// PUT /api/productos/:id -> actualizar producto (reemplaza campos enviados)
+router.put('/:id', async (req, res, next) => {
+  try {
+    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (!updated) return res.status(404).json({ message: 'Producto no encontrado' });
+    res.json(updated);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// DELETE /api/productos/:id -> borrar
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deleted = await Product.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: 'Producto no encontrado' });
+    res.json({ message: 'Producto eliminado correctamente' });
+  } catch (err) {
+    next(err);
+  }
+});
+
+export { router as productosRouter }; // 👈 Cambio aquí

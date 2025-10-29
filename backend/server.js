@@ -1,9 +1,11 @@
-// --- Dependencias ---
-require('dotenv').config();         // 👈 para leer el archivo .env
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose'); // 👈 agregamos mongoose
-const { productosRouter } = require("./routers/productos");
+// server.js
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import cors from 'cors';
+import { connectDB } from './config/db.js'; // 👈 Importar tu función
+import { productosRouter } from "./routers/productos.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -14,16 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // --- Conexión a MongoDB Atlas ---
-async function connectDB() {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('✅ Conectado correctamente a MongoDB Atlas');
-  } catch (error) {
-    console.error('❌ Error al conectar con MongoDB:', error.message);
-    process.exit(1); // Detiene el servidor si no hay conexión
-  }
-}
-connectDB();
+connectDB(); // 👈 Usar tu función centralizada
 
 // --- Rutas principales ---
 app.use("/api/productos", productosRouter);

@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 
 const featureSchema = new mongoose.Schema({
-  medidas: { type: String, required: true },
-  materiales: { type: String, required: true },
-  acabado: { type: String, required: true },
-  peso: { type: String, required: true },
-  capacidad: { type: String, required: true }
-});
+  name: { type: String, required: true },    // 👈 Cambio de "medidas" a "name"
+  value: { type: String, required: true }    // 👈 Cambio a "value"
+}, { _id: false }); // _id: false para no crear IDs en subdocumentos
 
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   price: { type: Number, required: true, min: 0 },
   description: { type: String },
   image: { type: String },
-  features: featureSchema 
+  features: [featureSchema]  // 👈 Array de features
 }, {
   timestamps: true
 });
