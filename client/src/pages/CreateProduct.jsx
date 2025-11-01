@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './CreateProduct.css';
-const API_URL = import.meta.env.VITE_API_URL;
+import { crearProducto } from '../api';
 
 
 
@@ -49,7 +49,7 @@ function CreateProduct() {
             alert("Complete los campos de la caracteristica a agregar");
             return;
         }
-        
+
         setProduct(prev => ({
             ...prev,
             features: [...prev.features, newFeature]
@@ -66,38 +66,27 @@ function CreateProduct() {
         }));
     };
 
-
+    const formReset = () => {
+        setProduct({
+            name: "",
+            price: 0,
+            description: "",
+            image: "",
+            features: []
+        });
+        setNewFeature({ name: "", value: "" });
+        setHasImage(false);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await fetch(`${API_URL}/api/productos`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(product)
-            });
-
-            if (!response.ok) {
-                throw new Error('No fue posible crear el producto');
-            }
-
-            const data = await response.json();
+            const data = await crearProducto(product);
             console.log('Producto creado:', data);
             alert('Producto creado con exito');
 
             //reset de formulario
-            setProduct({
-                name: "",
-                price: 0,
-                description: "",
-                image: "",
-                features: []
-            });
-            setNewFeature({ name: "", value: "" });
-            setHasImage(false);
+            formReset();
 
         } catch (error) {
             console.error(error);
@@ -136,7 +125,7 @@ function CreateProduct() {
                                 {hasImage && (
                                     <div className="form-group">
                                         <label htmlFor="image">URL de la imagen</label>
-                                        <input type="text" id="image" name="image" value={image} onChange={onInputChangeProduct} required minLength="1" />
+                                        <input type="text" id="image" name="image" placeholder='ej. Mesa-de-Noche-Aconcagua.png' value={image} onChange={onInputChangeProduct} required minLength="1" />
                                     </div>
                                 )}
                             </div>
