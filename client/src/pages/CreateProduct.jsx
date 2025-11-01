@@ -11,11 +11,12 @@ function CreateProduct() {
         name: "",
         price: 0,
         description: "",
+        stock: 0,
         image: "",
         features: []
     });
 
-    const { name, price, description, image } = product;
+    const { name, price, description, stock, image } = product;
 
     const [newFeature, setNewFeature] = useState({
         name: "",
@@ -118,7 +119,10 @@ function CreateProduct() {
                                 <label htmlFor="description">Descripción</label>
                                 <textarea id="description" name="description" value={description} onChange={onInputChangeProduct} required minLength="1" />
                             </div>
-
+                            <div className="form-group">
+                                <label htmlFor="stock">Stock</label>
+                                <input type="number" id="stock" name="stock" value={stock} onChange={onInputChangeProduct} />
+                            </div>
                             <div className="form-group-w-checkbox">
                                 <label htmlFor="imageCbx">El producto posee imagen</label>
                                 <input type="checkbox" id="imageCbx" onChange={onChangeHasImage} checked={hasImage} />

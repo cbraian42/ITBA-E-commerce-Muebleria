@@ -7,7 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 // Load environment variables from the root .env file
-dotenv.config({ path: path.resolve(process.cwd(), 'backend', '.env') });
+dotenv.config();
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,7 +37,7 @@ async function main() {
 
         for (const product of products) {
             const normalizedProductImage = normalizeName(product.image);
-            
+
             const foundImageFile = imageFiles.find(file => {
                 const normalizedFileName = normalizeName(file);
                 return normalizedFileName === normalizedProductImage;
