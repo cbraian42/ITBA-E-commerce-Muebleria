@@ -51,7 +51,7 @@ const ProductDetail = ({ product }) => {
       <div className="product-detail-container">
         <div className="product-detail-image">
           <img 
-            src={product.image} 
+            src={product.image || "https://placehold.co/600x400?text=N/A"} 
             alt={product.name}
           />
           {stock === 0 && (

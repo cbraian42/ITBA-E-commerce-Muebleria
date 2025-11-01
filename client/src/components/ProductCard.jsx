@@ -38,7 +38,7 @@ const ProductCard = ({ product, onClick, onAddToCart }) => {
     >
       <div className="product-card-image">
         <img
-          src={product.image}
+          src={product.image || "https://placehold.co/600x400?text=N/A"}
           alt={product.name}
           loading="lazy"
         />

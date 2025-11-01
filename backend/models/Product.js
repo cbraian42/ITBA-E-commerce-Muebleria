@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   price: { type: Number, required: true, min: 0 },
   description: { type: String },
+  stock:{type: Number, default: 0},  //en la consigna no dice q sea requiered asi que puse 0 de default, aunque en el front tambien esta como 0, es mas que nada por un tema de POSTs con postman
   image: { type: String },
   features: [featureSchema]  // 👈 Array de features
 }, {
