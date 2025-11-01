@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './CreateProduct.css';
 import { crearProducto } from '../api';
 
 
 
 function CreateProduct() {
+
+    const navigate = useNavigate();
+
     const [hasImage, setHasImage] = useState(false);
 
     const [product, setProduct] = useState({
@@ -16,7 +20,7 @@ function CreateProduct() {
         features: []
     });
 
-    const { name, price, description, stock, image } = product;
+    const { name, price, description, stock, image, features } = product;
 
     const [newFeature, setNewFeature] = useState({
         name: "",
@@ -86,8 +90,10 @@ function CreateProduct() {
             console.log('Producto creado:', data);
             alert('Producto creado con exito');
 
-            //reset de formulario
+            //reset de formulario, mas "ordenado" en una funcion
             formReset();
+            alert('Redirigiendo al catalogo...')
+            navigate("/productos");
 
         } catch (error) {
             console.error(error);
@@ -103,7 +109,7 @@ function CreateProduct() {
                     {/* izquierda*/}
                     <div className="add-product-left">
                         <form onSubmit={handleSubmit} className="add-product-form">
-                            <h1>Agregar producto</h1>
+                            <h1>Crear producto</h1>
 
                             <div className="form-group">
                                 <label htmlFor="name">Nombre</label>
@@ -139,7 +145,7 @@ function CreateProduct() {
                                 <input type="text" id="name" name="name" value={newFeature.name} onChange={onInputChangeFeature} />
                                 <label htmlFor="value">Valores de la caracteristica</label>
                                 <input type="text" id="value" name="value" value={newFeature.value} onChange={onInputChangeFeature} />
-                                <button type='button' onClick={handleAddFeature} className="btn btn-primary">Añadir caracteristica</button>
+                                <button type='button' onClick={handleAddFeature} className="btn-caracteristica">Añadir caracteristica</button>
                             </div>
 
                             <button type="submit" className="btn btn-primary">Crear</button>
@@ -147,11 +153,13 @@ function CreateProduct() {
                     </div>
                     {/* derecha */}
                     <div className="add-product-right">
+                        <h2>Lista de caracteristicas</h2>
                         <div className="grid grid-cols-2 gap-4 text-black">
-                            {product.features.map((f, index) => (
+                            {features.length === 0 ? (<p className='add-product-right-p'>Todavia no se agrego ninguna caracteristica del producto</p>) : null}
+                            {features.map((f, index) => (
                                 <div key={index} >
                                     <p>Nombre: {f.name}</p>
-                                    <p>Valor: {f.value}</p>
+                                    <p>Propiedades: {f.value}</p>
                                     <button type="button" onClick={() => handleRemoveFeature(index)}>Eliminar</button>
                                 </div>
                             ))}

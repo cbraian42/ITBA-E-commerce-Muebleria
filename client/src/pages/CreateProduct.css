@@ -1,4 +1,3 @@
-
 .add-product-page {
     min-height: 80vh;
     display: flex;
@@ -40,6 +39,48 @@
     min-height: 100%;
 }
 
+.add-product-right h2 {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.75rem;
+    color: #333;
+    padding-top: 30px;
+}
+
+.add-product-right-p {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    color: #c9600a;
+}
+
+.add-product-right p,
+button {
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.add-product-right button {
+    padding: 8px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+
+.add-product-right button:hover:not(:disabled) {
+    background-color: red;
+    transform: translateY(-2px);
+}
+
+.add-product-right button:active:not(:disabled) {
+    transform: translateY(0);
+}
 
 .add-product-form {
     width: 100%;
@@ -102,6 +143,26 @@
 
 .form-group-w-checkbox div {
     width: 100%;
+}
+
+.btn-caracteristica {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: rgb(255, 166, 0);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-caracteristica:hover:not(:disabled) {
+    background-color: var(--color-secundario);
+    transform: translateY(-2px);
 }
 
 .btn-primary {
