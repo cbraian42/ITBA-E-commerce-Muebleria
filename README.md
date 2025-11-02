@@ -1,7 +1,6 @@
 # ITBA E-commerce Mueblería
 
   - Proyecto **fullstack** desarrollado como parte de la cursada.
-  - Deploy front primer sprint: https://cbraian42.github.io/ITBA-E-commerce-Muebleria/
 
 ---
 
