@@ -225,6 +225,27 @@
   transform: none;
 }
 
+.btn-delete-product {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(184, 18, 18);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+  margin-top: 1rem;
+}
+
+.btn-delete-product:hover:not(:disabled) {
+  background-color: rgb(219, 168, 74);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 /* Estados: Loading */
 .product-detail-loading {
   display: flex;
@@ -245,8 +266,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Estados: Error */
