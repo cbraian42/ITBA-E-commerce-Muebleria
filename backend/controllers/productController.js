@@ -34,8 +34,8 @@ export const listProduct = async (req, res, next) => {
 // POST /api/productos -> crear producto con features embebidas
 export const addProduct = async (req, res, next) => {
     try {
-        const { name, price, description, image, features } = req.body;
-        const newProduct = await Product.create({ name, price, description, image, features });
+        const { name, price, description, image,stock, features } = req.body;
+        const newProduct = await Product.create({ name, price, description, image,stock, features });
         res.status(201).json(newProduct);
     } catch (err) {
         next(err);

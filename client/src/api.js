@@ -21,6 +21,16 @@ export async function crearProducto(data) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
-  if (!res.ok) throw new Error('Error al crear producto');
+  if (!res.ok) throw new Error('No fue posible crear el producto');
   return await res.json();
+}
+
+export async function eliminarProducto(id) {
+  const res = await fetch(`${API_URL}/api/productos/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) throw new Error('No fue posible eliminar el producto');
+
+  return await res.json(); 
 }

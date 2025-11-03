@@ -11,7 +11,7 @@ async function main() {
   console.log('✅ Conectado a MongoDB para seed');
 
   // Ruta del JSON
-  const data = JSON.parse(fs.readFileSync('../data/productos.json', 'utf-8'));
+  const data = JSON.parse(fs.readFileSync('../backend/data/productos.json', 'utf-8'));
 
   const inserted = await Product.insertMany(data);
   console.log(`✅ ${inserted.length} productos cargados correctamente`);
