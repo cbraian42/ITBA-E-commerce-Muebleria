@@ -301,11 +301,13 @@
   .product-detail-container {
     flex-direction: row;
     gap: 3rem;
+    align-items: flex-start; /* Alinea los items al inicio */
   }
 
   .product-detail-image {
     flex: 1;
     max-width: 50%;
+    top: 3rem; /* Espacio desde la parte superior */
   }
 
   .product-detail-info {
