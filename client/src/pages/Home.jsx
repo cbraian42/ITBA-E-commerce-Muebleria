@@ -36,10 +36,14 @@ export default function Home() {
                     <Link to="/productos" className="btn">Ver Catálogo</Link>
                 </div>
                 <div className="hero-imagen">
-                    <img
-                        src="http://localhost:4000/images/Cama-Neuquen.png"
-                        alt="Cama Neuquén de diseño artesanal en madera"
-                    />
+                    {destacados.length > 0 ? (
+                        <img
+                            src={destacados[2].image}
+                            alt={destacados[2].name}
+                        />
+                    ) : (
+                        <div className="hero-imagen-placeholder" />
+                    )}
                 </div>
             </section>
 
@@ -49,14 +53,14 @@ export default function Home() {
                 <div className="productos">
                     {destacados.length > 0 ? (
                         destacados.map(producto => (
-                            <ProductCard 
-                                key={producto._id} 
+                            <ProductCard
+                                key={producto._id}
                                 product={producto}
                                 onClick={handleProductClick}
                             />
                         ))
                     ) : (
-                        <p>Cargando productos...</p> 
+                        <p>Cargando productos...</p>
                     )}
                 </div>
             </section>
