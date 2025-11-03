@@ -4,6 +4,8 @@ import { useCart } from '../context/CartContext';
 import { eliminarProducto } from '../api';
 import './ProductDetail.css';
 
+import { IoArrowBack } from 'react-icons/io5';
+
 const ProductDetail = ({ product }) => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
@@ -66,7 +68,7 @@ const ProductDetail = ({ product }) => {
         className="btn-volver"
         type="button"
       >
-        ← Volver
+        <IoArrowBack /> Volver
       </button>
 
       <div className="product-detail-container">
