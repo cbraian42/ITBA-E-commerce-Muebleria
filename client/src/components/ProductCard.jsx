@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductCard.css';
 
-const ProductCard = ({ product, onClick, onAddToCart }) => {
+const ProductCard = ({ product, onClick, onAddToCart, showButton = true }) => {
   if (!product) {
     return null;
   }
@@ -67,14 +67,16 @@ const ProductCard = ({ product, onClick, onAddToCart }) => {
             ${product.price?.toLocaleString('es-AR')}
           </p>
           
-          <button 
-            className="btn-add-cart"
-            onClick={handleAddToCart}
-            disabled={product.stock === 0}
-            aria-label={`Agregar ${product.name} al carrito`}
-          >
-            {product.stock === 0 ? 'Sin stock' : 'Agregar'}
-          </button>
+          {showButton && (
+            <button 
+              className="btn-add-cart"
+              onClick={handleAddToCart}
+              disabled={product.stock === 0}
+              aria-label={`Agregar ${product.name} al carrito`}
+            >
+              {product.stock === 0 ? 'Sin stock' : 'Agregar'}
+            </button>
+          )}
         </div>
       </div>
     </article>

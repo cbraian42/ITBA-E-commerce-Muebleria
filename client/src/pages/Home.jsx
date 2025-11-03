@@ -64,6 +64,7 @@ export default function Home() {
                                 key={producto._id} 
                                 product={producto}
                                 onClick={handleProductClick}
+                                showButton={false} // Ocultar el botón aquí
                             />
                         ))
                     )}

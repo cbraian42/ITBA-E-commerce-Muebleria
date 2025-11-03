@@ -101,12 +101,13 @@
 }
 
 .product-card-price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-primario);
-  margin: 0;
-  flex-shrink: 1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin: 0;
+    flex-shrink: 1;
 }
+
 /* Botón agregar */
 .btn-add-cart {
     padding: 0.625rem 1.25rem;
