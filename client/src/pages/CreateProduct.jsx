@@ -9,8 +9,6 @@ function CreateProduct() {
 
     const navigate = useNavigate();
 
-    const [hasImage, setHasImage] = useState(false);
-
     const [product, setProduct] = useState({
         name: "",
         price: 0,
@@ -27,9 +25,7 @@ function CreateProduct() {
         value: ""
     });
 
-    const onChangeHasImage = () => {
-        setHasImage(prevHasImage => !prevHasImage);
-    }
+
 
     const onInputChangeProduct = (e) => {
         const { name, value } = e.target;
@@ -80,7 +76,6 @@ function CreateProduct() {
             features: []
         });
         setNewFeature({ name: "", value: "" });
-        setHasImage(false);
     }
 
     const handleSubmit = async (e) => {
@@ -103,70 +98,76 @@ function CreateProduct() {
     };
 
     return (
-        <div className="add-product-page">
-            <div className="add-product-box">
-                <div className="add-product-content">
-                    {/* izquierda*/}
-                    <div className="add-product-left">
-                        <form onSubmit={handleSubmit} className="add-product-form">
-                            <h1>Crear producto</h1>
+        <div className="create-product-page">
+            <form onSubmit={handleSubmit} className="form-container">
+                <h1 className="form-title">Crear Producto</h1>
 
-                            <div className="form-group">
-                                <label htmlFor="name">Nombre</label>
-                                <input type="text" id="name" name="name" value={name} onChange={onInputChangeProduct} required minLength="1" />
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="price">Precio</label>
-                                <input type="number" id="price" name="price" value={price} onChange={onInputChangeProduct} required />
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="description">Descripción</label>
-                                <textarea id="description" name="description" value={description} onChange={onInputChangeProduct} required minLength="1" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="stock">Stock</label>
-                                <input type="number" id="stock" name="stock" value={stock} onChange={onInputChangeProduct} />
-                            </div>
-                            <div className="form-group-w-checkbox">
-                                <label htmlFor="imageCbx">El producto posee imagen</label>
-                                <input type="checkbox" id="imageCbx" onChange={onChangeHasImage} checked={hasImage} />
-                                {hasImage && (
-                                    <div className="form-group">
-                                        <label htmlFor="image">URL de la imagen</label>
-                                        <input type="text" id="image" name="image" placeholder='ej. Mesa-de-Noche-Aconcagua.png' value={image} onChange={onInputChangeProduct} required minLength="1" />
-                                    </div>
-                                )}
-                            </div>
-                            <div className="form-group">
-                                <p>Agregar caracteristica</p>
-                                <label htmlFor="name">Nombre</label>
-                                <input type="text" id="name" name="name" value={newFeature.name} onChange={onInputChangeFeature} />
-                                <label htmlFor="value">Valores de la caracteristica</label>
-                                <input type="text" id="value" name="value" value={newFeature.value} onChange={onInputChangeFeature} />
-                                <button type='button' onClick={handleAddFeature} className="btn-caracteristica">Añadir caracteristica</button>
-                            </div>
-
-                            <button type="submit" className="btn btn-primary">Crear</button>
-                        </form>
+                {/* Detalles principales del producto */}
+                <div className="form-section">
+                    <div className="form-group">
+                        <label htmlFor="name">Nombre del Producto</label>
+                        <input type="text" id="name" name="name" value={name} onChange={onInputChangeProduct} required />
                     </div>
-                    {/* derecha */}
-                    <div className="add-product-right">
-                        <h2>Lista de caracteristicas</h2>
-                        <div className="grid grid-cols-2 gap-4 text-black">
-                            {features.length === 0 ? (<p className='add-product-right-p'>Todavia no se agrego ninguna caracteristica del producto</p>) : null}
-                            {features.map((f, index) => (
-                                <div key={index} >
-                                    <p>Nombre: {f.name}</p>
-                                    <p>Propiedades: {f.value}</p>
-                                    <button type="button" onClick={() => handleRemoveFeature(index)}>Eliminar</button>
-                                </div>
-                            ))}
-                        </div>
+
+                    <div className="form-group">
+                        <label htmlFor="price">Precio</label>
+                        <input type="number" id="price" name="price" value={price} onChange={onInputChangeProduct} required min="0" />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="description">Descripción</label>
+                        <textarea id="description" name="description" value={description} onChange={onInputChangeProduct} required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" value={stock} onChange={onInputChangeProduct} min="0" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="image">URL de la Imagen (opcional)</label>
+                        <input type="text" id="image" name="image" placeholder="ej. Mesa-Aconcagua.png" value={image} onChange={onInputChangeProduct} />
                     </div>
                 </div>
-            </div>
+
+                {/* Sección de Características */}
+                <div className="form-section">
+                    <h2 className="section-title">Características</h2>
+
+                    {/* Formulario para añadir nueva característica */}
+                    <div className="add-feature-form">
+                        <div className="form-group">
+                            <label htmlFor="feature-name">Nombre</label>
+                            <input type="text" id="feature-name" name="name" value={newFeature.name} onChange={onInputChangeFeature} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="feature-value">Valor</label>
+                            <input type="text" id="feature-value" name="value" value={newFeature.value} onChange={onInputChangeFeature} />
+                        </div>
+                        <button type="button" onClick={handleAddFeature} className="btn btn-secondary">
+                            Añadir Característica
+                        </button>
+                    </div>
+
+                    {/* Lista de características añadidas */}
+                    <div className="feature-list">
+                        {features.length > 0 ? (
+                            features.map((feature, index) => (
+                                <div key={index} className="feature-chip">
+                                    <span><strong>{feature.name}:</strong> {feature.value}</span>
+                                    <button type="button" onClick={() => handleRemoveFeature(index)} className="btn-remove-feature" aria-label="Eliminar característica">
+                                        &times;
+                                    </button>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="no-features-text">Aún no se han agregado características.</p>
+                        )}
+                    </div>
+                </div>
+
+                <button type="submit" className="btn btn-primary btn-submit">
+                    Crear Producto
+                </button>
+            </form>
         </div>
     );
 }
