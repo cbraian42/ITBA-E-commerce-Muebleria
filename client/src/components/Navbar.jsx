@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useCart } from '../context/CartContext'
 import './Navbar.css'
+import { AuthContext } from '../auth/AuthContext'
 
 export default function Navbar() {
+    const { isAuthenticated, user, logout, isAdmin } = useContext(AuthContext);
     const { cartCount } = useCart()
     const [menuAbierto, setMenuAbierto] = useState(false)
 
@@ -36,7 +38,21 @@ export default function Navbar() {
                     <li><Link to="/" onClick={cerrarMenu}>Inicio</Link></li>
                     <li><Link to="/productos" onClick={cerrarMenu}>Catálogo</Link></li>
                     <li><Link to="/contacto" onClick={cerrarMenu}>Contacto</Link></li>
-                    <li><Link to="/admin/crear-producto" onClick={cerrarMenu}>Crear Producto</Link></li>
+                    {isAuthenticated ? (
+                        <>
+                            <li><Link to="/perfil" onClick={cerrarMenu}>Perfil</Link></li>
+                            {isAdmin && (
+                                <li><Link to="/admin/crear-producto" onClick={cerrarMenu}>Crear Producto</Link></li>
+                            )
+                            }
+                            <li><button onClick={logout}>Cerrar sesion</button></li> {/*PONERLE ESTILO*/}
+                        </>
+                    ) : (
+                        <>
+                            <li><Link to="/login">Iniciar sesion</Link></li>
+                        </>
+                    )
+                    }
                     <li className="navbar-cart">
                         <Link to="/carrito" onClick={cerrarMenu}>
                             🛒

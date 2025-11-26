@@ -1,6 +1,8 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
+
 // Obtener todos los productos
+// ruta sin seguridad
 export async function getProductos() {
   const res = await fetch(`${API_URL}/api/productos`);
   if (!res.ok) throw new Error('Error al obtener productos');
@@ -8,6 +10,7 @@ export async function getProductos() {
 }
 
 // Obtener un producto por ID
+// ruta sin seguridad
 export async function getProducto(id) {
   const res = await fetch(`${API_URL}/api/productos/${id}`);
   if (!res.ok) throw new Error('Error al obtener el producto');
@@ -15,22 +18,27 @@ export async function getProducto(id) {
 }
 
 // Crear un nuevo producto
-export async function crearProducto(data) {
+// ruta con seguridad
+export async function crearProducto(data, token) {
   const res = await fetch(`${API_URL}/api/productos`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
     body: JSON.stringify(data)
   });
   if (!res.ok) throw new Error('No fue posible crear el producto');
   return await res.json();
 }
-
-export async function eliminarProducto(id) {
+// ruta con seguridad
+export async function eliminarProducto(id, token) {
   const res = await fetch(`${API_URL}/api/productos/${id}`, {
     method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${token}` }
   });
 
   if (!res.ok) throw new Error('No fue posible eliminar el producto');
 
-  return await res.json(); 
+  return await res.json();
 }

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { eliminarProducto } from '../api';
 import './ProductDetail.css';
 
 import { IoArrowBack } from 'react-icons/io5';
+import { AuthContext } from '../auth/AuthContext';
 
 const ProductDetail = ({ product }) => {
+  const { isAuthenticated, isAdmin, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [addedToCart, setAddedToCart] = useState(false);
@@ -27,7 +29,7 @@ const ProductDetail = ({ product }) => {
     const response = window.confirm(`¿Confirmar eliminación del producto '${product.name}'?`);
     if (response) {
       try {
-        const data = await eliminarProducto(product._id);
+        const data = await eliminarProducto(product._id,token);
         console.log('Producto eliminado:', data);
         alert('Producto eliminado con exito');
 
@@ -141,15 +143,36 @@ const ProductDetail = ({ product }) => {
                 : 'Sin stock'}
             </span>
           </div>
+          {isAuthenticated ? (
+            <>
+              <button
+                onClick={handleAddToCart}
+                className="btn-add-cart-detail"
+                disabled={stock === 0 || addedToCart}
+              >
+                {addedToCart ? '✓ Agregado al carrito' : 'Agregar al carrito'}
+              </button>
+              {isAdmin && (
+                <>
+                  <button type='button' className='btn-delete-product' onClick={handleDeleteProduct} >ELIMINAR </button>
 
-          <button
-            onClick={handleAddToCart}
-            className="btn-add-cart-detail"
-            disabled={stock === 0 || addedToCart}
-          >
-            {addedToCart ? '✓ Agregado al carrito' : 'Agregar al carrito'}
-          </button>
-          <button type='button' className='btn-delete-product' onClick={handleDeleteProduct} >ELIMINAR </button>
+                </>
+              )}
+            </>
+
+          ) : (
+            <>
+              <button
+                className="btn-add-cart-detail"
+                disabled={true}
+              >
+                ¡ Inicie sesion para agregar productos al carrito !
+              </button>
+            </>
+          )
+
+          }
+
 
         </div>
       </div>

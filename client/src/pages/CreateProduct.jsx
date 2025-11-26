@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './CreateProduct.css';
 import { crearProducto } from '../api';
+import { AuthContext } from '../auth/AuthContext';
 
 
 
 function CreateProduct() {
+  const { token } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -81,7 +83,7 @@ function CreateProduct() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const data = await crearProducto(product);
+            const data = await crearProducto(product,token);
             console.log('Producto creado:', data);
             alert('Producto creado con exito');
 
