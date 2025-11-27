@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import logger from './middleware/logger.js';
 import { notFoundRoute, errorHandler } from './middleware/errorHandler.js';
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -18,6 +19,7 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/auth", authRoutes);
 
 // --- Servir archivos estáticos ---
 const __filename = fileURLToPath(import.meta.url);
