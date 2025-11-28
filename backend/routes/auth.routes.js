@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.get("/profile", verifyToken, async (req, res) => {
+
+router.get("/profile", verifyToken, (req, res) => {
   return res.json({
     message: "Perfil del usuario autenticado",
     user: req.user
