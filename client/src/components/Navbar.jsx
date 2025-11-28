@@ -1,21 +1,16 @@
-import { Link } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { useCart } from '../context/CartContext'
-import './Navbar.css'
-import { AuthContext } from '../auth/AuthContext'
+import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useCart } from '../context/CartContext';
+import './Navbar.css';
+import { AuthContext } from '../auth/AuthContext';
 
 export default function Navbar() {
     const { isAuthenticated, user, logout, isAdmin } = useContext(AuthContext);
-    const { cartCount } = useCart()
-    const [menuAbierto, setMenuAbierto] = useState(false)
+    const { cartCount } = useCart();
+    const [menuAbierto, setMenuAbierto] = useState(false);
 
-    const toggleMenu = () => {
-        setMenuAbierto(!menuAbierto)
-    }
-
-    const cerrarMenu = () => {
-        setMenuAbierto(false)
-    }
+    const toggleMenu = () => setMenuAbierto(!menuAbierto);
+    const cerrarMenu = () => setMenuAbierto(false);
 
     return (
         <nav className="navbar">
@@ -38,21 +33,24 @@ export default function Navbar() {
                     <li><Link to="/" onClick={cerrarMenu}>Inicio</Link></li>
                     <li><Link to="/productos" onClick={cerrarMenu}>Catálogo</Link></li>
                     <li><Link to="/contacto" onClick={cerrarMenu}>Contacto</Link></li>
+
                     {isAuthenticated ? (
                         <>
                             <li><Link to="/perfil" onClick={cerrarMenu}>Perfil</Link></li>
                             {isAdmin && (
                                 <li><Link to="/admin/crear-producto" onClick={cerrarMenu}>Crear Producto</Link></li>
-                            )
-                            }
-                            <li><button onClick={logout}>Cerrar sesion</button></li> {/*PONERLE ESTILO*/}
+                            )}
+                            <li>
+                                <button onClick={logout} className="btn-logout">Cerrar sesión</button>
+                            </li>
                         </>
                     ) : (
                         <>
-                            <li><Link to="/login">Iniciar sesion</Link></li>
+                            <li><Link to="/login" onClick={cerrarMenu}>Iniciar sesión</Link></li>
+                            <li><Link to="/register" onClick={cerrarMenu}>Registrarse</Link></li>
                         </>
-                    )
-                    }
+                    )}
+
                     <li className="navbar-cart">
                         <Link to="/carrito" onClick={cerrarMenu}>
                             🛒
@@ -61,7 +59,7 @@ export default function Navbar() {
                     </li>
                 </ul>
 
-                {/* Icono de carrito fuera del menú hamburguesa para vista desktop */}
+                {/* Icono de carrito para vista desktop */}
                 <div className="navbar-cart-desktop">
                     <Link to="/carrito">
                         🛒
@@ -70,5 +68,5 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
-    )
+    );
 }
