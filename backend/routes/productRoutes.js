@@ -1,5 +1,5 @@
 import express from 'express';
-import {listProducts, listProduct, addProduct, updateProduct, deleteProduct  } from '../controllers/productController.js';
+import { listProducts, listProduct, addProduct, updateProduct, deleteProduct } from '../controllers/productController.js';
 import validateObjectId from '../middleware/validateObjectId.js';
 import { verifyToken, verifyAdmin } from "../middleware/auth.middleware.js";
 
@@ -13,7 +13,6 @@ router.get('/:id', validateObjectId, listProduct);
 router.post('/', verifyToken, verifyAdmin, addProduct);
 router.put('/:id', validateObjectId, verifyToken, verifyAdmin, updateProduct);
 router.delete('/:id', validateObjectId, verifyToken, verifyAdmin, deleteProduct);
-
 
 export { router as productsRouter };
 
