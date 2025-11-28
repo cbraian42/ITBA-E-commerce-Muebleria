@@ -1,60 +1,109 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../auth/AuthContext';
-import './ContactForm.css'; //Usamos el mismo estilo que en contacto.
+import './ContactForm.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    const { login } = useContext(AuthContext);
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/users/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-            const data = await response.json();
-            if (!response.ok) throw new Error(data.message);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  
+  const [message, setMessage] = useState(''); 
+  const [isSuccess, setIsSuccess] = useState(false); 
 
-            login(data.token); //se guarda el jwt, que tendria q tener la info del usuario logueado
-            console.log('Login exitoso');
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage(''); 
+    setIsSuccess(false); 
 
-        } catch (error) {
-            alert(`Error en el login: ${error.message}`);
-        }
-    };
-return (
-  <div className="contact-page">
-    <div className="contact-box">
-      <form className="contact-form">
-        <h1>Inicio de sesión</h1>
+    try {
+      const response = await fetch('http://localhost:4000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-        <div className="form-group">
-          <label>Usuario:</label>
-          <input
-            type="text"
-            placeholder="Tu usuario"
-            className="input-field"
-          />
-        </div>
+      const data = await response.json();
+      
+      if (!response.ok) {
+        setMessage(data.message || "Error desconocido. Inténtalo de nuevo.");
+        throw new Error(data.message); 
+      }
+      login(data.token);
+      setMessage("Login exitoso");
+      setIsSuccess(true); 
+      setTimeout(() => {
+        navigate("/perfil");
+      }, 500); 
 
-        <div className="form-group">
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            placeholder="Tu contraseña"
-            className="input-field"
-          />
-        </div>
+    } catch (error) {
+      console.error('Error durante el login:', error.message);
+      if(!message) setMessage("Error de conexión con la API."); 
+    }
+  };
 
-        <button type="submit" className="btn btn-primary">
-          Iniciar sesión
-        </button>
-      </form>
+  return (
+    <div className="contact-page">
+      <div className="contact-box">
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <h1>Inicio de sesión</h1>
+          
+          {message && (
+            <p 
+              style={{ 
+                marginTop: "10px", 
+                textAlign: "center", 
+                color: isSuccess ? 'green' : 'red' 
+              }}
+            >
+              {message}
+            </p>
+          )}
+
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Tu email"
+              className="input-field"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Tu contraseña"
+              className="input-field" 
+              value={formData.password}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Iniciar sesión
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-)
+  );
 }
 
-export default Login
+export default Login;
