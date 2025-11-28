@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import logger from './middleware/logger.js';
 import { notFoundRoute, errorHandler } from './middleware/errorHandler.js';
 import authRoutes from "./routes/auth.routes.js";
+import orderRoutes from "./routes/order.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRoutes);
+app.use("/orders", orderRoutes);
 
 // --- Servir archivos estáticos ---
 const __filename = fileURLToPath(import.meta.url);
