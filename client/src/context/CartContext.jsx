@@ -1,9 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 
-// 1. Crear el Contexto
 const CartContext = createContext();
 
-// 2. Crear un hook personalizado para usar el contexto más fácilmente
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -12,33 +10,45 @@ export const useCart = () => {
   return context;
 };
 
-// 3. Crear el Proveedor del Contexto
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      // Verificar si el producto ya está en el carrito
       const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
-
       if (existingProductIndex !== -1) {
-        // Si ya existe, actualizamos la cantidad
         const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += product.quantity;
+        updatedCart[existingProductIndex].quantity += 1; // Asumimos 1 si viene del card
         return updatedCart;
       } else {
-        // Si no existe, lo agregamos al carrito
-        return [...prevCart, product];
+        return [...prevCart, { ...product, quantity: 1 }];
       }
     });
   };
+
+  // --- NUEVAS FUNCIONES ---
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter(item => item.id !== productId));
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  };
+  // ------------------------
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const value = {
     cart,
     addToCart,
+    removeFromCart, // Exportamos
+    clearCart,      // Exportamos
     cartCount,
+    calculateTotal, // Exportamos
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

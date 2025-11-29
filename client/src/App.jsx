@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
+import Cart from './pages/Carts' 
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
@@ -12,6 +13,7 @@ import Register from './pages/Register'
 import { useContext } from 'react'
 import { AuthContext } from './auth/AuthContext'
 import Perfil from './pages/Perfil'
+
 
 function App() {
   const { isAuthenticated, isAdmin } = useContext(AuthContext);
@@ -26,10 +28,14 @@ function App() {
         <Route path="/productos" element={<Catalog />} />
         <Route path="/productos/:id" element={<ProductDetail />} />
         <Route path="/contacto" element={<Contact />} />
-        {isAuthenticated && (  // esta autenticado?
+        
+        {/* Nueva ruta del carrito */}
+        <Route path="/carrito" element={<Cart />} /> 
+
+        {isAuthenticated && (  
           <>
             <Route path="/perfil" element={<Perfil />} />
-            {isAdmin && ( //es admin?
+            {isAdmin && ( 
               <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
             )}
           </>)
