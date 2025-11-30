@@ -31,6 +31,7 @@ import logger from './middleware/logger.js';
 import { notFoundRoute, errorHandler } from './middleware/errorHandler.js';
 import authRoutes from "./routes/auth.routes.js";
 import orderRoutes from "./routes/order.routes.js";
+import cartRoutes from "./routes/cart.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -46,8 +47,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 connectDB();
 
 app.use(logger);
-app.use("/auth", authRoutes);
-app.use("/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/cart", cartRoutes);
 app.use("/api/productos", productsRouter);
 
 app.use(notFoundRoute);

@@ -34,7 +34,7 @@ export default function Perfil() {
       setAlert(null);
       
       try {
-        const res = await fetch("http://localhost:4000/auth/profile", {
+        const res = await fetch("http://localhost:4000/api/auth/profile", {
           headers: getAuthHeaders() 
         });
 
@@ -74,7 +74,7 @@ export default function Perfil() {
     formData.append("avatar", avatarFile);
 
     try {
-      const res = await fetch("http://localhost:4000/auth/upload-avatar", {
+      const res = await fetch("http://localhost:4000/api/auth/upload-avatar", {
         method: "PUT",
         headers: { 
           Authorization: `Bearer ${token}` 

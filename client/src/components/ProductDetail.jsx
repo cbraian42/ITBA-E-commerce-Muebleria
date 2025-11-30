@@ -19,7 +19,7 @@ const ProductDetail = ({ product }) => {
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart({ ...product, quantity });
+      addToCart(product, quantity);
       setAddedToCart(true);
       setTimeout(() => setAddedToCart(false), 2000);
     }

@@ -1,14 +1,9 @@
-// backend/scripts/fixImageNames.js
-import dotenv from 'dotenv';
+// scripts/fixLocalImages.js
 import mongoose from 'mongoose';
 import Product from '../models/Product.js';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-// Load environment variables from the root .env file
-dotenv.config();
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,19 +13,16 @@ const imagesDir = path.join(__dirname, '..', 'public', 'images');
 // Helper function to normalize names for comparison
 const normalizeName = (name) => {
     if (!name) return '';
-    // Removes extension, dashes, and underscores, and converts to lowercase
     return path.parse(name).name.replace(/[-_]/g, '').toLowerCase();
 }
 
 async function main() {
-    if (!process.env.MONGO_URI) {
-        console.error('Error: MONGO_URI no está definida. Asegúrate de que tu archivo .env está en el directorio backend.');
-        process.exit(1);
-    }
-
+    // Hardcoded to localhost to fix the running server's DB
+    const dbUrl = "mongodb://127.0.0.1:27017/muebleria";
+    
     try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('✅ Conectado a MongoDB para actualizar nombres de imagen');
+        await mongoose.connect(dbUrl);
+        console.log('✅ Conectado a MongoDB LOCAL para actualizar nombres de imagen');
 
         const products = await Product.find();
         const imageFiles = await fs.readdir(imagesDir);
@@ -49,24 +41,21 @@ async function main() {
                     product.image = foundImageFile;
                     await product.save();
                 } else {
-                    console.log(`= '${product.name}' ya tiene el nombre de imagen correcto ('${product.image}').`);
+                    console.log(`= '${product.name}' ya tiene el nombre de imagen correcto.`);
                 }
             } else {
-                console.log(`❌ No se encontró imagen para: ${product.name} (buscando por: ${product.image})`);
+                console.log(`❌ No se encontró imagen para: ${product.name}`);
             }
         }
 
-        console.log('\n✨ Proceso de actualización completado.');
+        console.log('\n✨ Proceso de actualización completado en LOCAL.');
 
     } catch (error) {
-        console.error('Ha ocurrido un error durante el proceso:', error);
+        console.error('Error:', error);
     } finally {
         await mongoose.disconnect();
         console.log('🔌 Desconectado de MongoDB.');
     }
 }
 
-main().catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+main();

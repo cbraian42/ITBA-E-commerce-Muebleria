@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
 import { AuthContext } from '../auth/AuthContext';
+import { FaShoppingCart } from 'react-icons/fa';
 
 export default function Navbar() {
     const { isAuthenticated, user, logout, isAdmin } = useContext(AuthContext);
@@ -15,7 +16,9 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-container">
-                <h1 className="navbar-logo">Mueblería Jota</h1>
+                <Link to="/" className="navbar-logo-link" onClick={cerrarMenu}>
+                    <h1 className="navbar-logo">Mueblería Jota</h1>
+                </Link>
 
                 {/* Botón hamburguesa */}
                 <button
@@ -53,7 +56,7 @@ export default function Navbar() {
 
                     <li className="navbar-cart">
                         <Link to="/carrito" onClick={cerrarMenu}>
-                            🛒
+                            <FaShoppingCart className="cart-icon" />
                             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                         </Link>
                     </li>
@@ -62,7 +65,7 @@ export default function Navbar() {
                 {/* Icono de carrito para vista desktop */}
                 <div className="navbar-cart-desktop">
                     <Link to="/carrito">
-                        🛒
+                        <FaShoppingCart className="cart-icon" />
                         {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                     </Link>
                 </div>

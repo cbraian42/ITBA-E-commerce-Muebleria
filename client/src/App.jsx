@@ -14,6 +14,7 @@ import { useContext } from 'react'
 import { AuthContext } from './auth/AuthContext'
 import Perfil from './pages/Perfil'
 
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   const { isAuthenticated, isAdmin } = useContext(AuthContext);
@@ -30,16 +31,25 @@ function App() {
         <Route path="/contacto" element={<Contact />} />
         
         {/* Nueva ruta del carrito */}
-        <Route path="/carrito" element={<Cart />} /> 
-
-        {isAuthenticated && (  
-          <>
-            <Route path="/perfil" element={<Perfil />} />
-            {isAdmin && ( 
-              <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
-            )}
-          </>)
-        }
+        <Route path="/carrito" element={<Cart />} />
+        
+        {/* Rutas Protegidas */}
+        <Route 
+          path="/perfil" 
+          element={
+            <ProtectedRoute>
+              <Perfil />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/crear-producto" 
+          element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminCreateProduct />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
       <Footer />
     </CartProvider>

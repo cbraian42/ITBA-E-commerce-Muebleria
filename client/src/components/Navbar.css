@@ -1,259 +1,223 @@
-/* MOBILE FIRST - Estilos para móvil por defecto */
+/* Navbar.css */
 .navbar {
   background-color: var(--color-fondo);
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid var(--color-secundario);
 }
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  padding: 0 20px;
 }
+
+/* Logo */
+.navbar-logo-link {
+  text-decoration: none;
+}
+
 .navbar-logo {
-  font-size: 1.5rem;
-  margin: 0;
   color: var(--color-primario);
-}
-
-/* Botón hamburguesa - SOLO VISIBLE EN MÓVIL */
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
   cursor: pointer;
-  padding: 5px;
-  z-index: 1001;
-}
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: var(--color-primario);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* Animación del botón hamburguesa cuando está activo */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Menú - OCULTO por defecto en móvil */
-.navbar-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background-color: var(--color-fondo);
-  list-style: none;
-  padding: 5rem 2rem 2rem;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transition: right 0.3s ease;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-secondary);
 }
-/* Menú abierto */
-.navbar-menu.active {
-  right: 0;
+
+/* Menú Desktop */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-menu li {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-menu li a {
   color: var(--color-primario);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
-  display: block;
-  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .navbar-menu li a:hover {
-  color: var(--color-claro);
+  color: var(--color-acento);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos del carrito */
-.navbar-cart a, .navbar-cart-desktop a {
-  position: relative;
-  display: inline-block;
-  font-size: 1.5rem; /* Ajusta el tamaño del ícono */
+/* Botón de Cerrar Sesión */
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--color-primario);
   color: var(--color-primario);
-  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  /* Alineación vertical */
+  height: fit-content;
+}
+
+.btn-logout:hover {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+}
+
+/* Carrito */
+.navbar-cart-desktop a,
+.navbar-cart a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primario);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+}
+
+.navbar-cart-desktop a:hover,
+.navbar-cart a:hover {
+  color: var(--color-acento);
+  background-color: transparent;
+}
+
+.cart-icon {
+  font-size: 1.8rem;
 }
 
 .cart-count {
   position: absolute;
   top: -5px;
-  right: -10px;
+  right: -5px;
   background-color: var(--color-secundario);
   color: white;
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 0.75rem;
-  font-weight: bold;
+  width: 22px;
+  height: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Ocultar el carrito de escritorio en móvil */
-.navbar-cart-desktop {
-    display: none;
-}
-
-/* TABLET Y ESCRITORIO - Media Query */
-@media (min-width: 768px) {
-
-  /* Ocultar el botón hamburguesa */
-  .hamburger {
-    display: none;
-  }
-
-  /* Menú horizontal en escritorio */
-  .navbar-menu {
-    position: static;
-    width: auto;
-    height: auto;
-    flex-direction: row;
-    align-items: center; /* Alinear items verticalmente */
-    gap: 2rem;
-    padding: 0;
-    box-shadow: none;
-    background: none;
-  }
-
-  .navbar-menu li a {
-    font-size: 1rem;
-  }
-  nav a.active {
-    border-bottom: 2px solid var(--color-secundario);
-    color: var(--color-secundario)
-  }
-
-  /* Ocultar el carrito del menú hamburguesa en escritorio */
-  .navbar-menu .navbar-cart {
-      display: none;
-  }
-
-  /* Mostrar el carrito de escritorio */
-  .navbar-cart-desktop {
-      display: block;
-  }
-}
-
-/*css viejo para ir comparando
-
-header {
-  padding: 0 2rem;
-  background-color: var(--color-fondo);
-  border-bottom: 2px solid var(--color-secundario);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  min-height: 80px;
-}
-
-/* Logo 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo h1 {
-  font-family: var(--font-secondary);
-  font-weight: var(--weight-bold);
-  color: var(--color-primario);
-  font-size: 1.5rem;
+/* Hamburger Menu (Mobile) */
+.hamburger {
   display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  gap: 5px;
 }
 
-#imglogo {
-  width: 120px;
-  height: auto;
-  display: block;
-  margin-bottom: 1rem;
-}
-/* Menú Hamburguesa 
-.menu-toggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 101;
-}
-.menu-toggle .line {
-  display: block;
+.hamburger span {
   width: 25px;
   height: 3px;
   background-color: var(--color-primario);
-  margin: 5px 0;
+  border-radius: 2px;
   transition: all 0.3s ease;
 }
-/* Navegación 
-nav {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-fondo);
-  border-bottom: 2px solid var(--color-secundario);
-  z-index: 100;
+
+/* Mobile Styles */
+@media screen and (max-width: 960px) {
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 80px;
+    /* Altura del navbar */
+    left: -100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: var(--color-fondo);
+    padding-top: 2rem;
+    gap: 1.5rem;
+    border-top: 1px solid var(--color-primario);
+  }
+
+  .navbar-menu.active {
+    left: 0;
+    opacity: 1;
+    z-index: 998;
+  }
+
+  .navbar-menu li {
+    height: auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-menu li a {
+    width: 80%;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Animación Hamburger */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  .navbar-cart-desktop {
+    display: none;
+  }
+
+  .navbar-cart {
+    display: block;
+  }
 }
-nav.active {
-  display: block;
-}
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-nav a, nav button, nav span {
-  font-weight: 600;
-  color: var(--color-primario);
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-nav a:hover, nav button:hover {
-  color: var(--color-claro);
-}
-/* Carrito 
-.cart {
-  position: relative;
-  color: white !important;
-  margin-top: 0;
-  align-self: center;
-}
-.contador {
-  background: var(--color-secundario);
-  color: white;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  right: -12px;
+
+@media screen and (min-width: 961px) {
+  .navbar-menu .navbar-cart {
+    display: none;
+  }
 }
