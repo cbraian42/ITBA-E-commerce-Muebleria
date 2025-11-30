@@ -3,7 +3,7 @@ import './ProductCard.css';
 import { AuthContext } from '../auth/AuthContext';
 
 const ProductCard = ({ product, onClick, onAddToCart }) => {
-  console.log('ProductCard received:', product?.name, product?.image);
+  //console.log('ProductCard received:', product?.name, product?.image);
   if (!product) {
     return null;
   }
@@ -12,9 +12,7 @@ const ProductCard = ({ product, onClick, onAddToCart }) => {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    if (onAddToCart) {
-      onAddToCart(product);
-    }
+    onAddToCart(product);
   };
 
   const handleCardClick = () => {

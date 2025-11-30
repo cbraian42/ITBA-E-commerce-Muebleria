@@ -74,7 +74,7 @@ const Catalog = () => {
                   key={product._id}
                   product={product}
                   onClick={() => handleProductClick(product)}
-                  onAddToCart={() => handleAddToCart(product)}
+                  onAddToCart={handleAddToCart}
                 />
               ))}
             </div>
