@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getProductos } from '../api';
 import ProductCard from '../components/ProductCard';
+import { useCart } from '../context/CartContext';
 import './Catalog.css';
 
 const Catalog = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +35,7 @@ const Catalog = () => {
   };
 
   const handleAddToCart = (product) => {
-    console.log('Added to cart from catalog:', product);
+    addToCart(product);
   };
 
   return (
@@ -72,7 +74,7 @@ const Catalog = () => {
                   key={product._id}
                   product={product}
                   onClick={() => handleProductClick(product)}
-                  onAddToCart={() => handleAddToCart(product)}
+                  onAddToCart={handleAddToCart}
                 />
               ))}
             </div>

@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ProductCard.css';
+import { AuthContext } from '../auth/AuthContext';
 
-const ProductCard = ({ product, onClick, onAddToCart, showButton = true }) => {
+const ProductCard = ({ product, onClick, onAddToCart }) => {
+  //console.log('ProductCard received:', product?.name, product?.image);
   if (!product) {
     return null;
   }
+  const { isAuthenticated } = useContext(AuthContext);
+
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    if (onAddToCart) {
-      onAddToCart(product);
-    }
+    onAddToCart(product);
   };
 
   const handleCardClick = () => {
@@ -28,7 +30,7 @@ const ProductCard = ({ product, onClick, onAddToCart, showButton = true }) => {
   };
 
   return (
-    <article 
+    <article
       className="product-card"
       onClick={handleCardClick}
       onKeyDown={handleKeyDown}
@@ -49,26 +51,26 @@ const ProductCard = ({ product, onClick, onAddToCart, showButton = true }) => {
           <span className="product-card-badge badge-nuevo">Nuevo</span>
         )}
       </div>
-      
+
       <div className="product-card-info">
         <h3 className="product-card-title">{product.name}</h3>
-        
+
         {product.description && (
           <p className="product-card-description">
-            {product.description.length > 80 
-              ? `${product.description.substring(0, 80)}...` 
+            {product.description.length > 80
+              ? `${product.description.substring(0, 80)}...`
               : product.description
             }
           </p>
         )}
-        
+
         <div className="product-card-footer">
           <p className="product-card-price">
             ${product.price?.toLocaleString('es-AR')}
           </p>
-          
-          {showButton && (
-            <button 
+
+          {isAuthenticated && ( //si no esta logueado, no se muestra el boton de agregar
+            <button
               className="btn-add-cart"
               onClick={handleAddToCart}
               disabled={product.stock === 0}

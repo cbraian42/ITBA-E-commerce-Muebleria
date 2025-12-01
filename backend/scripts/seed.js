@@ -7,7 +7,8 @@ import Product from '../models/Product.js';
 import fs from 'fs';
 
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  // Usamos MONGO_URI que es lo que está en el .env
+  await mongoose.connect(process.env.MONGO_URI);
   console.log('✅ Conectado a MongoDB para seed');
 
   // Ruta del JSON

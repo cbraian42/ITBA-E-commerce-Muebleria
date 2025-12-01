@@ -4,11 +4,14 @@ import { getProductos } from '../api';
 import ProductCard from '../components/ProductCard';
 import ProductCardSkeleton from '../components/ProductCardSkeleton'; // Importar el esqueleto
 import './Home.css';
+import { useCart } from '../context/CartContext';
 
 export default function Home() {
     const [destacados, setDestacados] = useState([]);
     const [loading, setLoading] = useState(true); // Estado de carga
     const navigate = useNavigate();
+    const { addToCart } = useCart();
+
 
     useEffect(() => {
         const cargarProductos = async () => {
@@ -28,6 +31,10 @@ export default function Home() {
 
     const handleProductClick = (product) => {
         navigate(`/productos/${product._id}`);
+    };
+
+    const handleAddToCart = (product) => {
+        addToCart(product);
     };
 
     return (
@@ -60,11 +67,12 @@ export default function Home() {
                         [...Array(4)].map((_, index) => <ProductCardSkeleton key={index} />)
                     ) : (
                         destacados.map(producto => (
-                            <ProductCard 
-                                key={producto._id} 
+                            <ProductCard
+                                key={producto._id}
                                 product={producto}
                                 onClick={handleProductClick}
                                 showButton={false} // Ocultar el botón aquí
+                                onAddToCart={handleAddToCart}
                             />
                         ))
                     )}
